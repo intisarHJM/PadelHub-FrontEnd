@@ -22,7 +22,7 @@ const SignUp = () => {
         "http://localhost:3001/auth/sign-up",
         userData
       )
-      console.log("Success:", res.data.data)
+      console.log("Success:", res.data)
     } catch (err) {
       console.error("Error signing up:", err)
     }
@@ -64,14 +64,7 @@ const SignUp = () => {
         value={userData.email}
       />
 
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        placeholder="password"
-        onChange={handleChange}
-        value={userData.password}
-      />
+     
 
       <a href="/sign-in">Already have an account?</a>
       <button type="submit">Register</button>
