@@ -22,7 +22,7 @@ const SignUp = () => {
         "http://localhost:3001/auth/sign-up",
         userData
       )
-      console.log("Success:", res.data)
+      console.log("Success:", res.data.data)
     } catch (err) {
       console.error("Error signing up:", err)
     }
@@ -31,7 +31,30 @@ const SignUp = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h1 id="signUp-title">Sign up</h1>
-
+      <label htmlFor="username">username</label>
+      <input
+        type="text"
+        name="username"
+        placeholder="username"
+        onChange={handleChange}
+        value={userData.username}
+      />
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        placeholder="password"
+        onChange={handleChange}
+        value={userData.password}
+      />
+      <label htmlFor="phoneNumber">phone number</label>
+      <input
+        type="text"
+        name="phoneNumber"
+        placeholder="phoneNumber"
+        onChange={handleChange}
+        value={userData.phoneNum}
+      />
       <label htmlFor="email">Email</label>
       <input
         type="email"
