@@ -17,9 +17,12 @@ const Nav = ({ user, handleLogOut }) => {
 
   const publicOptions = (
     <>
-      <Link to="/">Home</Link>
-      <Link to="/Sign-in">Register</Link>
-      <Link to="/Sign-up">Sign In</Link>
+      <Link to="/">Welcome</Link>
+      <Link to="/About">About</Link>
+      <Link to="/Equipment">Equipment</Link>
+      <Link to="/Court">Court</Link>
+
+
     </>
   )
 
