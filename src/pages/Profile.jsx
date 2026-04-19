@@ -2,26 +2,43 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 
 const Profile = () => {
-  const [userData, setUserData] = useState({})
+  const [userData, setUserData] = useState(null)
 
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/auth/session")
+        //this takes the token from the storage
+        const token = localStorage.getItem("token")
+
+        if (!token) {
+          console.error("No token found in localStorage")
+
+          return
+        }
+        const res = await axios.get("http://localhost:3001/auth/session", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+
+        // console.log("Profile Data:", res.data)
+
         setUserData(res.data)
       } catch (err) {
-        console.error("Error data:", err)
+        console.error("Error getting the profile data", err)
       }
     }
     getUserData()
-  }, [setUserData])
+  }, [])
 
-
-console.log(userData.data.email)
-
-
-
-  return <main></main>
+  return (
+    <main className="profile-main">
+      <h1>{userData?.username}'s profile</h1>
+      <h3>E-mail: {userData?.email}</h3>
+      <h3>phone: {userData?.phoneNum}</h3>
+      <button>Reservations</button>
+    </main>
+  )
 }
 
 export default Profile

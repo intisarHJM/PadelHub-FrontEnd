@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const SignIn = () => {
   const initialState = {
@@ -7,6 +8,7 @@ const SignIn = () => {
     password: "",
   }
   const [userData, setUserData] = useState(initialState)
+  const nav = useNavigate()
 
   const handleChange = (event) => {
     setUserData({
@@ -23,6 +25,10 @@ const SignIn = () => {
         "http://localhost:3001/auth/sign-in",
         userData
       )
+
+      localStorage.setItem("token", res.data.token)
+      nav("/profile")
+
       console.log("Success:", res.data)
       setUserData(initialState)
     } catch (err) {
@@ -34,11 +40,7 @@ const SignIn = () => {
     <form onSubmit={handleSubmit}>
       <h1 id="signIn-title">Sign in</h1>
 
-
-
-
-
-<label htmlFor="email">Email</label>
+      <label htmlFor="email">Email</label>
       <input
         type="email"
         name="email"
@@ -47,7 +49,6 @@ const SignIn = () => {
         value={userData.email}
       />
 
-      
       <label htmlFor="password">Password</label>
       <input
         type="password"
@@ -56,8 +57,6 @@ const SignIn = () => {
         onChange={handleChange}
         value={userData.password}
       />
-
-
 
       <a href="/sign-up">create new Account</a>
       <button type="submit">Sign in </button>
