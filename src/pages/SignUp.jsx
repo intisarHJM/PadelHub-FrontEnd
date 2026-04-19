@@ -2,10 +2,13 @@ import React, { useState } from "react"
 import axios from "axios"
 
 const SignUp = () => {
-  const [userData, setUserData] = useState({
-    email: "",
+  const initialState = {
+    username: "",
     password: "",
-  })
+    phoneNum: "",
+    email: "",
+  }
+  const [userData, setUserData] = useState(initialState)
 
   const handleChange = (event) => {
     setUserData({
@@ -23,6 +26,7 @@ const SignUp = () => {
         userData
       )
       console.log("Success:", res.data)
+      setUserData(initialState)
     } catch (err) {
       console.error("Error signing up:", err)
     }
@@ -50,7 +54,7 @@ const SignUp = () => {
       <label htmlFor="phoneNumber">phone number</label>
       <input
         type="text"
-        name="phoneNumber"
+        name="phoneNum"
         placeholder="phoneNumber"
         onChange={handleChange}
         value={userData.phoneNum}
@@ -63,8 +67,6 @@ const SignUp = () => {
         onChange={handleChange}
         value={userData.email}
       />
-
-     
 
       <a href="/sign-in">Already have an account?</a>
       <button type="submit">Register</button>
