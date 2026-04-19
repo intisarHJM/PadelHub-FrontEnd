@@ -1,77 +1,18 @@
-# PadelHub-FrontEnd
+# React + Vite
 
- Project 3 of software engineering
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Date: 16/4/2026
+Currently, two official plugins are available:
 
-### By:
-* Rehab Mohammed
-* Intisar Hussain
-* Hassan Mahfoodh
-* Abdulla Hussain
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
+## React Compiler
 
-#### [GitHub]
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-### ***Description***
-#### Padel Club Raed provides professional courts (indoor and outdoor) with the highest specifications. We make it easy for you to book, choose equipment, and enjoy the best padel facilities in Bahrain.
-***
+Note: This will impact Vite dev & build performances.
 
+## Expanding the ESLint configuration
 
-## 🔗 Frontend Repository
-The client-side application for this project can be found here:
-**[PadelHub Backend Repository](https://github.com/intisarHJM/PadelHub-backend.git)**
-
-### ***Technologies Used***
-* Node.js
-* Express.js
-* npm
-* MongoDB with Mongoose ODM
-* JWT , CORS middleware
-* React and Javascript
-
-***
-
-### ***Getting Started***
-
-##### to be declared
-
-
-
-***
-
- **Planned Wireframe Illustration**
-
-   ![Home Page](./wireFrame-imgs//1.jpg)
-
-   ![About Page](./wireFrame-imgs//2.jpg)
-
-   ![Clubs Page](./wireFrame-imgs//3.jpg)
-
-   ![Single Club Page ](./wireFrame-imgs//4.jpg)
-
-   ![Reservation Page](./wireFrame-imgs//5.jpg)
-
-
-
-### ***Screenshots***
-
- **Final Project Design**
-   ![]()
-   *This screenshot shows the final result of the project design.*
-
-
-***
-
-### ***Future Updates***
-
-To be declared
-
-
-***
-
-### ***Credits***
-
-
-
-***
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
