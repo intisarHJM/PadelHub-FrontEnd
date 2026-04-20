@@ -27,7 +27,10 @@ const SignIn = () => {
       )
 
       localStorage.setItem("token", res.data.token)
+      console.log(res.data.token)
       nav("/profile")
+
+      // alert("incorrectly password")
 
       console.log("Success:", res.data)
       setUserData(initialState)
@@ -59,7 +62,7 @@ const SignIn = () => {
       />
 
       <a href="/sign-up">create new Account</a>
-      <button type="submit">Sign in </button>
+      <button disabled={!userData.email || !userData.password}>Sign in</button>
     </form>
   )
 }
