@@ -7,13 +7,9 @@ import Welcome from "./pages/Welcome"
 import Profile from "./pages/Profile"
 import SignIn from "./pages/Sign-in"
 import Home from "./pages/Home"
-
+import Court from "./components/Court"
 
 const App = () => {
-
-
-
-
   return (
     <main>
       <Routes>
@@ -22,10 +18,8 @@ const App = () => {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/profile" element={<Profile />} />
-
+        <Route path="/courts" element={<Court />} />
       </Routes>
-
-
     </main>
   )
 }

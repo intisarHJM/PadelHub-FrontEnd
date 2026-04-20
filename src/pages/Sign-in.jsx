@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const SignIn = () => {
   const initialState = {
@@ -45,6 +46,7 @@ const SignIn = () => {
         type="email"
         name="email"
         placeholder="email"
+        id="email"
         onChange={handleChange}
         value={userData.email}
       />
@@ -54,11 +56,13 @@ const SignIn = () => {
         type="password"
         name="password"
         placeholder="password"
+        id="password"
         onChange={handleChange}
         value={userData.password}
       />
 
-      <a href="/sign-up">create new Account</a>
+      <Link to="/sign-up">Create new Account</Link>
+      {/* <a href="/sign-up">create new Account</a> */}
       <button type="submit">Sign in </button>
     </form>
   )
