@@ -6,19 +6,30 @@ import { Route, Routes } from "react-router"
 import Welcome from "./pages/Welcome"
 import Profile from "./pages/Profile"
 import SignIn from "./pages/Sign-in"
+import Home from "./pages/Home"
+import About from "./pages/About"
+
 
 const App = () => {
+  {
+  }
+
   return (
-    <main>
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/profile" element={<Profile />} />
+    <>
 
 
-      </Routes>
-    </main>
+
+      <main>
+        <Routes>
+           <Route path="/" element={<Welcome />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </main>
+    </>
   )
 }
 
