@@ -3,13 +3,13 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 
-const SignIn = ({setUser, user}) => {
+const SignIn = ({ setUser, user }) => {
   const initialState = {
     email: "",
     password: "",
   }
   const [userData, setUserData] = useState(initialState)
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState("")
   const nav = useNavigate()
 
   const handleChange = (event) => {
@@ -31,7 +31,7 @@ const SignIn = ({setUser, user}) => {
       localStorage.setItem("token", res.data.token)
       setUser(res.data.user)
       console.log("res: ", res)
-      
+
       console.log(res.data.token)
       nav("/profile")
 
@@ -68,18 +68,11 @@ const SignIn = ({setUser, user}) => {
         value={userData.password}
       />
 
-<<<<<<< HEAD
-      <Link to="/sign-up">Create new Account</Link>
-      {/* <a href="/sign-up">create new Account</a> */}
-      <button type="submit">Sign in </button>
-=======
       <a href="/sign-up">create new Account</a>
       <button disabled={!userData.email || !userData.password}>Sign in</button>
 
       {}
->>>>>>> 1fbf9f63aaf189868ce7cc914edcd236167042e3
     </form>
-
   )
 }
 

@@ -7,22 +7,6 @@ import Welcome from "./pages/Welcome"
 import Profile from "./pages/Profile"
 import SignIn from "./pages/Sign-in"
 import Home from "./pages/Home"
-<<<<<<< HEAD
-import Court from "./components/Court"
-
-const App = () => {
-  return (
-    <main>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/welcome" element={<Welcome />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/courts" element={<Court />} />
-      </Routes>
-    </main>
-=======
 import About from "./pages/About"
 
 const App = () => {
@@ -42,7 +26,6 @@ const App = () => {
   return (
     <>
       <main>
-
         <Routes>
           {user ? (
             <>
@@ -62,7 +45,6 @@ const App = () => {
         </Routes>
       </main>
     </>
->>>>>>> 1fbf9f63aaf189868ce7cc914edcd236167042e3
   )
 }
 export default App
