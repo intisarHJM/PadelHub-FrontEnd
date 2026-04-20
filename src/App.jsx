@@ -9,31 +9,43 @@ import SignIn from "./pages/Sign-in"
 import Home from "./pages/Home"
 import About from "./pages/About"
 
-
-
 const App = () => {
-  {
+  const initialState = {
+    email: "",
+    password: "",
+  }
+  const [user, setUser] = useState(initialState)
+
+  const handleChange = (event) => {
+    setUser({
+      ...user,
+      [event.target.name]: event.target.value,
+    })
   }
 
   return (
     <>
-
-
-
       <main>
 
         <Routes>
-           <Route path="/" element={<Welcome />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/about" element={<About />} />
+          {user ? (
+            <>
+              <Route path="/home" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/about" element={<About />} />
+            </>
+          ) : (
+            <Route path="/" element={<Welcome />} />
+          )}
 
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route
+            path="/sign-in"
+            element={<SignIn setUser={setUser} user={user} />}
+          />
         </Routes>
       </main>
     </>
   )
 }
-
 export default App
