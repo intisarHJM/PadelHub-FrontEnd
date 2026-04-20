@@ -1,7 +1,10 @@
 import React, { useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const SignUp = () => {
+
+   const navigate =useNavigate()
   const initialState = {
     username: "",
     password: "",
@@ -69,7 +72,7 @@ const SignUp = () => {
       />
 
       <a href="/sign-in">Already have an account?</a>
-      <button type="submit">Register</button>
+      <button  onClick={()=>navigate('/Sign-in')}>Register</button>
     </form>
   )
 }
