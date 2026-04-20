@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom'
+import Nav from "./Nav"
 
 const Home = () => {
   const navigate = useNavigate()
 
   return (
     <div >
-      
+      <Nav />
       <h1>home </h1>
       <section>
         <button onClick={() => navigate('/Welcome')}>

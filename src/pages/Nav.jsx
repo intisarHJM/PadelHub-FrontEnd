@@ -19,9 +19,9 @@ const Nav = ({ user, handleLogOut }) => {
   const publicOptions = (
     <>
 
-      <Link to="/About">about</Link>
-      <Link to="/Equipment">equipments</Link>
-      <Link to="/Court">courts</Link>
+      <Link to="/about">about</Link>
+      <Link to="/equipment">equipments</Link>
+      <Link to="/court">courts</Link>
 
 
     </>
