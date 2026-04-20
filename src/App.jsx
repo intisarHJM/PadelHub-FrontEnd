@@ -6,6 +6,8 @@ import { Route, Routes } from "react-router"
 import Welcome from "./pages/Welcome"
 import Profile from "./pages/Profile"
 import SignIn from "./pages/Sign-in"
+import Home from "./pages/Home"
+
 
 const App = () => {
 
@@ -15,14 +17,15 @@ const App = () => {
   return (
     <main>
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/welcome" element={<Welcome />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/profile" element={<Profile />} />
 
       </Routes>
 
-      
+
     </main>
   )
 }
