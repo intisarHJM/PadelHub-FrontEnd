@@ -8,6 +8,10 @@ import Profile from "./pages/Profile"
 import SignIn from "./pages/Sign-in"
 
 const App = () => {
+
+
+
+
   return (
     <main>
       <Routes>
@@ -16,8 +20,9 @@ const App = () => {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/profile" element={<Profile />} />
 
-
       </Routes>
+
+      
     </main>
   )
 }
