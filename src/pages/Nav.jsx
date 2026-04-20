@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
 
@@ -17,10 +18,10 @@ const Nav = ({ user, handleLogOut }) => {
 
   const publicOptions = (
     <>
-      <Link to="/">Welcome</Link>
-      <Link to="/About">About</Link>
-      <Link to="/Equipment">Equipment</Link>
-      <Link to="/Court">Court</Link>
+
+      <Link to="/About">about</Link>
+      <Link to="/Equipment">equipments</Link>
+      <Link to="/Court">courts</Link>
 
 
     </>
@@ -29,7 +30,7 @@ const Nav = ({ user, handleLogOut }) => {
   return (
     <header>
       <Link to="/">
-        <img className="logo" src="/images/logo.png" alt="React Auth Logo" />
+
       </Link>
       <nav>
         {user ? userOptions : publicOptions}
