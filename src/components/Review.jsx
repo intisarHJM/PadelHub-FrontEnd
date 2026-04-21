@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { useParams } from "react-router-dom"
 
 const Review = () => {
   const { id } = useParams()
   const [reviews, setReviews] = useState([])
-  const [description, setDescription] = useState('')
+  const [description, setDescription] = useState("")
   const [rating, setRating] = useState(5)
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Review = () => {
       try {
         const token = localStorage.getItem("token")
         const res = await axios.get(`http://localhost:3001/courts/${id}`, {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         })
 
         setReviews(res.data.reviews || [])
@@ -31,7 +31,7 @@ const Review = () => {
 
       const newReviewData = {
         description: description,
-        rating: Number(rating)
+        rating: Number(rating),
       }
 
       const res = await axios.post(
@@ -42,10 +42,9 @@ const Review = () => {
 
       setReviews(res.data.court.reviews)
 
-      setDescription('')
+      setDescription("")
     } catch (err) {
       console.error("Error:", err.response?.data)
-
     }
   }
 
@@ -58,10 +57,9 @@ const Review = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="add the description"
-
         />
         <br />
-         <label htmlFor="select-rating">Select a Rating:</label>
+        <label htmlFor="select-rating">Select a Rating:</label>
         <select value={rating} onChange={(e) => setRating(e.target.value)}>
           <option value="5">⭐⭐⭐⭐⭐ </option>
           <option value="4">⭐⭐⭐⭐ </option>
@@ -72,15 +70,13 @@ const Review = () => {
         <button type="submit">Send Review</button>
       </form>
 
-
       <h3>Reviews List:</h3>
       {reviews && reviews.length > 0 ? (
-
         [...reviews].reverse().map((rev, index) => (
           <div key={rev._id || index}>
-             <p>Description:{rev.description}</p>
+            <p>Description:{rev.description}</p>
             <p>Rating:{rev.rating}</p>
-            <p>{rev.createdAt?.split('T')[0] }</p>
+            <p>{rev.createdAt?.split("T")[0]}</p>
           </div>
         ))
       ) : (

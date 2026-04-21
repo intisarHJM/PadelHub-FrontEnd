@@ -21,15 +21,18 @@ const Nav = ({ user, handleLogOut }) => {
       <Link to="/equipment"> equipments </Link>
       <Link to="/courts"> courts </Link>
       <Link to="/home"> home </Link>
+      <Link to="/profile">profile</Link>
     </>
   )
 
   return (
+    <>
     <header>
       <Link to="/"></Link>
       <nav>{user ? userOptions : publicOptions}</nav>
     </header>
-  )
+
+ </> )
 }
 
 export default Nav

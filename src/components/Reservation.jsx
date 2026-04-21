@@ -1,6 +1,7 @@
 //view the reservation done by the user
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import Nav from "../components"
 
 const Reservation = () => {
   const [userData, setUserData] = useState(null)

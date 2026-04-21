@@ -27,14 +27,9 @@ const Home = () => {
 
   return (
     <>
-      <div>
+      <div className="home-header">
         <Nav />
         <h1>home </h1>
-        <section>
-          <button onClick={() => navigate("/Welcome")}>
-            Click Here To Get Started
-          </button>
-        </section>
       </div>
 
       <div>

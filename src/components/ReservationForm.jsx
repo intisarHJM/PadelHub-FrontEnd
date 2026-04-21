@@ -11,11 +11,7 @@ const ReservationForm = () => {
   const initialState = {
     name: "",
     phoneNumber: "",
-<<<<<<< HEAD
-    date: new Date(), // Stays as a Date object
-=======
     date: new Date(),
->>>>>>> 4ef2dc0e26d3e4757805ae708e0e7f7cfee901c6
     totalPrice: 30,
   }
 
@@ -25,7 +21,6 @@ const ReservationForm = () => {
     setFormState({ ...formState, [event.target.name]: event.target.value })
   }
 
-  // Specific handler for the Calendar since it doesn't use standard event.target
   const handleDateChange = (e) => {
     setFormState({ ...formState, date: e.value })
   }
@@ -34,12 +29,8 @@ const ReservationForm = () => {
     event.preventDefault()
     try {
       await axios.post("http://localhost:3001/reservations", formState)
-<<<<<<< HEAD
-=======
-
->>>>>>> 4ef2dc0e26d3e4757805ae708e0e7f7cfee901c6
       setFormState(initialState)
-      navigate("/reservation") // Move navigation here so it only happens on success
+      navigate("/reservation")
     } catch (error) {
       console.error("Error:", error)
     }
@@ -63,7 +54,6 @@ const ReservationForm = () => {
           onChange={handleChange}
           value={formState.phoneNumber}
         />
-<<<<<<< HEAD
         <br />
         <Calendar
           value={formState.date}
@@ -74,12 +64,6 @@ const ReservationForm = () => {
         <p>Duration: 5AM - 5PM</p>
         <p>Price: ${formState.totalPrice}</p>
         <button type="submit">Confirm Reservation</button>
-=======
-        <p>Total Price: 30$</p>
-        <button onClick={() => navigate("/reservation")} type="submit">
-          Confirm Reservation
-        </button>
->>>>>>> 4ef2dc0e26d3e4757805ae708e0e7f7cfee901c6
       </form>
     </div>
   )

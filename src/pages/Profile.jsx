@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom"
 import Nav from "./Nav"
 
 const Profile = () => {
-
   // no need for this code
   // const handleChange = () => {
   //   setUserData({ ...userData, [event.target.name]: event.target.value })
@@ -40,13 +39,20 @@ const Profile = () => {
   }, [])
 
   return (
-
     <main className="profile-main">
-      <Nav/>
+      <Nav />
       <h1>{userData?.username}'s profile</h1>
       <h3>E-mail: {userData?.email}</h3>
       <h3>phone: {userData?.phoneNum}</h3>
-      <button   onClick={()=>navigate('/reservation')}  type="submit" >Reservations</button>
+
+      <div className="userProfile-buttons">
+        <button onClick={() => navigate("/reservation")} type="button">
+          Reservations
+        </button>
+        <button type="button" onClick={() => navigate("/UpdatePassword")}>
+          update password
+        </button>
+      </div>
     </main>
   )
 }
