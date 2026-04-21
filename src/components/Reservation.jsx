@@ -32,7 +32,7 @@ const Reservation = () => {
   return (
     <div className="reservation-view">
       <h1>my Reservation</h1>
-      <div>{userData.activeReservation && userData.created_At}</div>
+      <div>{userData?.activeReservation && userData.created_At}</div>
 
     </div>
   )

@@ -1,13 +1,18 @@
 import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { Calendar } from "primereact/calendar"
+
+import { InputMask } from "primereact/inputmask"
+
 const ReservationForm = () => {
   const navigate = useNavigate()
+
   const initialState = {
-    name: '',
-    phoneNumber: '',
-    date: new Date(),
-    totalPrice: 30
+    name: "",
+    phoneNumber: "",
+    date: new Date(), // Stays as a Date object
+    totalPrice: 30,
   }
 
   const [formState, setFormState] = useState(initialState)
@@ -16,12 +21,17 @@ const ReservationForm = () => {
     setFormState({ ...formState, [event.target.name]: event.target.value })
   }
 
+  // Specific handler for the Calendar since it doesn't use standard event.target
+  const handleDateChange = (e) => {
+    setFormState({ ...formState, date: e.value })
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.post('http://localhost:3001/reservations', formState)
-    
+      await axios.post("http://localhost:3001/reservations", formState)
       setFormState(initialState)
+      navigate("/reservation") // Move navigation here so it only happens on success
     } catch (error) {
       console.error("Error:", error)
     }
@@ -45,9 +55,16 @@ const ReservationForm = () => {
           onChange={handleChange}
           value={formState.phoneNumber}
         />
-        <p>Total Price: 30$</p>
-        <button  onClick={()=>navigate('/reservation')}  type="submit">
-          Confirm Reservation</button>
+        <br />
+        <Calendar
+          value={formState.date}
+          onChange={handleDateChange}
+          dateFormat="mm/dd/yy"
+          showIcon
+        />
+        <p>Duration: 5AM - 5PM</p>
+        <p>Price: ${formState.totalPrice}</p>
+        <button type="submit">Confirm Reservation</button>
       </form>
     </div>
   )
