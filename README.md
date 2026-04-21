@@ -41,15 +41,15 @@ The client-side application for this project can be found here:
 
  **Planned Wireframe Illustration**
 
-   ![Home Page](./1.jpg)
+   ![Home Page](./public/1.jpg)
 
-   ![About Page](./2.jpg)
+   ![About Page](./public/2.jpg)
 
-   ![Clubs Page](./3.jpg)
+   ![Clubs Page](./public/3.jpg)
 
-   ![Single Club Page ](./4.jpg)
+   ![Single Club Page ](./public/4.jpg)
 
-   ![Reservation Page](./5.jpg)
+   ![Reservation Page](./public/5.jpg)
 
 
 
