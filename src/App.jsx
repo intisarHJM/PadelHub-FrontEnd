@@ -14,6 +14,7 @@ import Review from "./components/Review"
 import Court from "./components/Court"
 import ViewCount from "./components/View-count"
 import Equipment from "./pages/Equipment"
+import UpdatePassword from "./components/Update-Password"
 
 const App = () => {
   const initialState = {
@@ -42,6 +43,7 @@ const App = () => {
               <Route path="/courts" element={<Court />} />
               <Route path="/courts/:id" element={<ViewCount />} />
               <Route path="/equipment" element={<Equipment />} />
+              <Route path="/update-password" element={<UpdatePassword />} />
             </>
           ) : (
             <Route path="/" element={<Welcome />} />

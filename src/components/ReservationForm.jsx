@@ -1,15 +1,12 @@
 import { useState } from "react"
 import axios from "axios"
-import { useNavigate, useParams } from "react-router-dom"
-
+import { useNavigate } from "react-router-dom"
 const ReservationForm = () => {
   const navigate = useNavigate()
-  const { id } = useParams()
-
   const initialState = {
     name: "",
     phoneNumber: "",
-    date: new Date().toISOString().split('T')[0],
+    date: new Date(),
     totalPrice: 30,
   }
 
@@ -19,29 +16,18 @@ const ReservationForm = () => {
     setFormState({ ...formState, [event.target.name]: event.target.value })
   }
 
+  // Specific handler for the Calendar since it doesn't use standard event.target
+  const handleDateChange = (e) => {
+    setFormState({ ...formState, date: e.value })
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      const token = localStorage.getItem("token")
+      await axios.post("http://localhost:3001/reservations", formState)
 
-
-      const reservationData = {
-        ...formState,
-        court: id
-      }
-
-      await axios.post(
-        `http://localhost:3001/reservations/${id}`,
-        reservationData,
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      )
-
+>>>>>>> 4ef2dc0e26d3e4757805ae708e0e7f7cfee901c6
       setFormState(initialState)
-
-      navigate("/reservation")
-
     } catch (error) {
       console.error("Error creating reservation:", error.response?.data?.message || error.message)
 
@@ -77,9 +63,22 @@ const ReservationForm = () => {
           value={formState.date}
           required
         />
+<<<<<<< HEAD
+        <br />
+        <Calendar
+          value={formState.date}
+          onChange={handleDateChange}
+          dateFormat="mm/dd/yy"
+          showIcon
+        />
+        <p>Duration: 5AM - 5PM</p>
+        <p>Price: ${formState.totalPrice}</p>
+        <button type="submit">Confirm Reservation</button>
+=======
         <p>Total Price: 30$</p>
-
-        <button  onClick={() => navigate("/reservation")}type="submit">Confirm Reservation</button>
+        <button onClick={() => navigate("/reservation")} type="submit">
+          Confirm Reservation
+        </button>
       </form>
     </div>
   )
