@@ -3,7 +3,6 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { Calendar } from "primereact/calendar"
 
-
 const ReservationForm = ({ courtId }) => {
   const navigate = useNavigate()
 
@@ -11,6 +10,7 @@ const ReservationForm = ({ courtId }) => {
     name: "",
     phoneNumber: "",
     date: new Date(),
+    timeSlot: "8:00 PM - 10:00 PM", // أضفنا الوقت للحالة الابتدائية
     totalPrice: 30,
     court: courtId
   }
@@ -27,24 +27,21 @@ const ReservationForm = ({ courtId }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
-
     const token = localStorage.getItem("token")
 
     try {
-
-      await axios.post(`http://localhost:3001/reservations/create`, formState, {
+      // تصحيح: قمنا بتعريف المتغير response هنا ليتم استخدامه في الـ navigate
+      const response = await axios.post(`http://localhost:3001/reservations/create`, formState, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
 
       setFormState(initialState)
-
-      navigate("/confirmation")
+      // الآن سيتم إرسال البيانات بنجاح لصفحة التأكيد
+      navigate("/confirmation", { state: { res: response.data } })
     } catch (error) {
       console.error("Error:", error.response?.data || error.message)
-
     }
   }
 
@@ -74,20 +71,24 @@ const ReservationForm = ({ courtId }) => {
           showIcon
         />
 
-        <label htmlFor="select-time">Select a Time:</label>
-        <select value=" " >
-          <option value="time-6">8:00 PM - 10:00 PM</option>
-          <option value="time-5">6:00 PM - 8:00 PM</option>
-          <option value="time-4">4:00 PM - 6:00 PM</option>
-          <option value="time-3">2:00 PM - 4:00 PM</option>
-          <option value="time-2">12:00 PM - 2:00 PM</option>
-          <option value="time-1">9:00 PM - 11:00 PM</option>
+        <br />
+        <label htmlFor="timeSlot">Select a Time:</label>
+        {/* تصحيح: ربط الـ select بالـ onChange والـ value لمنع التحذير */}
+        <select
+          name="timeSlot"
+          value={formState.timeSlot}
+          onChange={handleChange}
+        >
+          <option value="8:00 PM - 10:00 PM">8:00 PM - 10:00 PM</option>
+          <option value="6:00 PM - 8:00 PM">6:00 PM - 8:00 PM</option>
+          <option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option>
+          <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
+          <option value="12:00 PM - 2:00 PM">12:00 PM - 2:00 PM</option>
+          <option value="9:00 PM - 11:00 PM">9:00 PM - 11:00 PM</option>
         </select>
 
         <p>Price: ${formState.totalPrice}</p>
-
-
-        <button   type="submit">Confirm Reservation</button>
+        <button type="submit">Confirm Reservation</button>
       </form>
     </div>
   )
