@@ -1,57 +1,57 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
-import Court from "./Court"
-
-const ReservationForm = ({ res, setRes }) => {
-  const navigate = userNavigate()
-
+const ReservationForm = () => {
+  const navigate = useNavigate()
   const initialState = {
     name: "",
-    PhoneNumber: "",
+    phoneNumber: "",
+    date: new Date(),
+    totalPrice: 30,
   }
 
   const [formState, setFormState] = useState(initialState)
-  const [courts, setCourts] = useState([])
-
-  useEffect(() => {
-    const getData = async()
-  })
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    const response = await axios.post("http://localhost:3001/reserv", formState)
-    let resList = [...res]
-    resList.push(response.data)
-    setRes(issuesRes)
-    setFormState(initialState)
-  }
 
   const handleChange = (event) => {
     setFormState({ ...formState, [event.target.name]: event.target.value })
   }
 
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      await axios.post("http://localhost:3001/reservations", formState)
+
+      setFormState(initialState)
+    } catch (error) {
+      console.error("Error:", error)
+    }
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="text"> Name :</label>
-      <input
-        type="text"
-        name="username"
-        onChange={handleChange}
-        value={formState.date}
-      />
-      <label htmlFor="phone-number"> Phone Number:</label>
-
-      <input
-        type="number"
-        name="phone-number"
-        onChange={handleChange}
-        value={formState.price}
-        autoComplete="off"
-      />
-
-      <button type="submit"> Confirm Reservation </button>
-    </form>
+    <div>
+      <h1>Reservation Form</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          onChange={handleChange}
+          value={formState.name}
+        />
+        <input
+          type="text"
+          name="phoneNumber"
+          placeholder="Phone number"
+          onChange={handleChange}
+          value={formState.phoneNumber}
+        />
+        <p>Total Price: 30$</p>
+        <button onClick={() => navigate("/reservation")} type="submit">
+          Confirm Reservation
+        </button>
+      </form>
+    </div>
   )
 }
+
 export default ReservationForm

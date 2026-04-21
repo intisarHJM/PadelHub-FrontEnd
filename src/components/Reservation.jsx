@@ -4,7 +4,7 @@ import axios from "axios"
 
 const Reservation = () => {
   const [userData, setUserData] = useState(null)
-  
+
 
   useEffect(() => {
     const getUserReservation = async () => {
@@ -37,3 +37,4 @@ const Reservation = () => {
     </div>
   )
 }
+export default Reservation
