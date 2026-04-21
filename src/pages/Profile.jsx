@@ -5,6 +5,11 @@ import Nav from "./Nav"
 
 const Profile = () => {
 
+  // no need for this code
+  // const handleChange = () => {
+  //   setUserData({ ...userData, [event.target.name]: event.target.value })
+  // }
+
   const [userData, setUserData] = useState(null)
   const navigate = useNavigate()
   useEffect(() => {

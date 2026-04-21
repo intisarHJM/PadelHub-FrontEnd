@@ -1,14 +1,15 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
-const SignIn = ({setUser, user}) => {
+const SignIn = ({ setUser, user }) => {
   const initialState = {
     email: "",
     password: "",
   }
   const [userData, setUserData] = useState(initialState)
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState("")
   const nav = useNavigate()
 
   const handleChange = (event) => {
@@ -30,7 +31,7 @@ const SignIn = ({setUser, user}) => {
       localStorage.setItem("token", res.data.token)
       setUser(res.data.user)
       console.log("res: ", res)
-      
+
       console.log(res.data.token)
       nav("/profile")
 
@@ -52,6 +53,7 @@ const SignIn = ({setUser, user}) => {
         type="email"
         name="email"
         placeholder="email"
+        id="email"
         onChange={handleChange}
         value={userData.email}
       />
@@ -61,6 +63,7 @@ const SignIn = ({setUser, user}) => {
         type="password"
         name="password"
         placeholder="password"
+        id="password"
         onChange={handleChange}
         value={userData.password}
       />
@@ -70,7 +73,6 @@ const SignIn = ({setUser, user}) => {
 
       {}
     </form>
-
   )
 }
 
