@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
+import Nav from "./Nav"
 
 const Profile = () => {
-  const [userData, setUserData] = useState(null)
 
+  // no need for this code
+  // const handleChange = () => {
+  //   setUserData({ ...userData, [event.target.name]: event.target.value })
+  // }
+
+  const [userData, setUserData] = useState(null)
+  const navigate = useNavigate()
   useEffect(() => {
     const getUserData = async () => {
       try {
@@ -32,11 +40,13 @@ const Profile = () => {
   }, [])
 
   return (
+
     <main className="profile-main">
+      <Nav/>
       <h1>{userData?.username}'s profile</h1>
       <h3>E-mail: {userData?.email}</h3>
       <h3>phone: {userData?.phoneNum}</h3>
-      <button>Reservations</button>
+      <button   onClick={()=>navigate('/reservation')}  type="submit" >Reservations</button>
     </main>
   )
 }

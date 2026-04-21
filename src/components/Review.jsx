@@ -53,6 +53,7 @@ const Review = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <h3>Add Review</h3>
+        <label htmlFor="description">Add the Description:</label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -60,10 +61,13 @@ const Review = () => {
 
         />
         <br />
+         <label htmlFor="select-rating">Select a Rating:</label>
         <select value={rating} onChange={(e) => setRating(e.target.value)}>
-          <option value="5">5 </option>
-          <option value="4">4 </option>
-          <option value="3">3 </option>
+          <option value="5">⭐⭐⭐⭐⭐ </option>
+          <option value="4">⭐⭐⭐⭐ </option>
+          <option value="3">⭐⭐⭐</option>
+          <option value="2">⭐⭐ </option>
+          <option value="1">⭐</option>
         </select>
         <button type="submit">Send Review</button>
       </form>
@@ -74,8 +78,8 @@ const Review = () => {
 
         [...reviews].reverse().map((rev, index) => (
           <div key={rev._id || index}>
-            <p>Rating:{rev.rating} / 5</p>
-            <p>Description:{rev.description}</p>
+             <p>Description:{rev.description}</p>
+            <p>Rating:{rev.rating}</p>
             <p>{rev.createdAt?.split('T')[0] }</p>
           </div>
         ))

@@ -11,6 +11,10 @@ import About from "./pages/About"
 import ReservationForm from "./components/ReservationForm"
 import Reservation from "./components/Reservation"
 import Review from "./components/Review"
+import Court from "./components/Court"
+import ViewCount from "./components/View-count"
+import Equipment from "./pages/Equipment"
+import UpdatePassword from "./components/Update-Password"
 
 const App = () => {
   const initialState = {
@@ -30,13 +34,16 @@ const App = () => {
     <>
       <main>
         <Routes>
-
           <Route path="/" element={<Welcome />} />
           {user ? (
             <>
               <Route path="/home" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/about" element={<About />} />
+              <Route path="/courts" element={<Court />} />
+              <Route path="/courts/:id" element={<ViewCount />} />
+              <Route path="/equipment" element={<Equipment />} />
+              <Route path="/update-password" element={<UpdatePassword />} />
             </>
           ) : (
             <Route path="/" element={<Welcome />} />
@@ -48,11 +55,9 @@ const App = () => {
             element={<SignIn setUser={setUser} user={user} />}
           />
           <Route path="/reservationForm" element={<ReservationForm />} />
-           <Route path="/reservation" element={<Reservation />} />
-        <Route path="/court-reviews/:id" element={<Review />} />
+          <Route path="/reservation" element={<Reservation />} />
+          <Route path="/court-reviews/:id" element={<Review />} />
         </Routes>
-
-
       </main>
     </>
   )
