@@ -50,6 +50,7 @@ const Equipment = () => {
 
   return (
     <>
+    <Nav />
       <form onSubmit={handleSubmit}>
         <h1>Buy Tools!</h1>
         <div className="equipments-images">

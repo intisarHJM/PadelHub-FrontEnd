@@ -41,8 +41,8 @@ const Review = () => {
       )
 
       setReviews(res.data.court.reviews)
-
       setDescription("")
+      setRating(5)
     } catch (err) {
       console.error("Error:", err.response?.data)
     }
@@ -74,8 +74,8 @@ const Review = () => {
       {reviews && reviews.length > 0 ? (
         [...reviews].reverse().map((rev, index) => (
           <div key={rev._id || index}>
-            <p>Description:{rev.description}</p>
-            <p>Rating:{rev.rating}</p>
+            <p>Description: {rev.description}</p>
+            <p>Rating: {"⭐".repeat(Number(rev.rating))}</p>
             <p>{rev.createdAt?.split("T")[0]}</p>
           </div>
         ))
