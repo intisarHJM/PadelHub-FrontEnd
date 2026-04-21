@@ -35,14 +35,13 @@ const SignIn = ({ setUser, user }) => {
       console.log("res: ", res)
 
       console.log(res.data.token)
-      nav("/profile")
-
-      // alert("incorrectly password")
+      nav("/home")
 
       console.log("Success:", res.data)
       // setUserData(initialState)
     } catch (err) {
       console.error("Error signing up:", err)
+      alert("Wrong email or password")
     }
   }
 
