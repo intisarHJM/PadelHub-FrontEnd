@@ -11,6 +11,8 @@ import About from "./pages/About"
 import ReservationForm from "./components/ReservationForm"
 import Reservation from "./components/Reservation"
 import Review from "./components/Review"
+import Court from "./components/Court"
+import ViewCount from "./components/View-count"
 
 const App = () => {
   const initialState = {
@@ -36,6 +38,8 @@ const App = () => {
               <Route path="/home" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/about" element={<About />} />
+              <Route path="/courts" element={<Court />} />
+              <Route path="/courts/:id" element={<ViewCount />} />
             </>
           ) : (
             <Route path="/" element={<Welcome />} />

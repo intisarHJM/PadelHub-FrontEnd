@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import Review from "../components/Review"
 import Nav from "../pages/Nav"
-// import ReservationForm from "../components/ReservationForm"
+import ReservationForm from "../components/ReservationForm"
 
 const ViewCount = () => {
   const { id } = useParams()
@@ -40,7 +40,7 @@ const ViewCount = () => {
 
         <hr />
 
-        {/* <ReservationForm courtId={court._id} price={court.price} /> */}
+        <ReservationForm courtId={court._id} price={court.price} />
 
         <hr />
 
