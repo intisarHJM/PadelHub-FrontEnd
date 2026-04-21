@@ -1,12 +1,15 @@
 import { useState } from "react"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+
 const ReservationForm = () => {
   const navigate = useNavigate()
+  const { id } = useParams()
+
   const initialState = {
     name: "",
     phoneNumber: "",
-    date: new Date(),
+    date: new Date().toISOString().split('T')[0],
     totalPrice: 30,
   }
 
@@ -19,11 +22,25 @@ const ReservationForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.post("http://localhost:3001/reservations", formState)
+      const token = localStorage.getItem("token")
+
+
+      await axios.post(
+        `http://localhost:3001/reservations/${id}`,
+        formState,
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      )
 
       setFormState(initialState)
+
+
+      navigate("/reservation")
+
     } catch (error) {
-      console.error("Error:", error)
+      console.error("Error creating reservation:", error)
+
     }
   }
 
@@ -37,16 +54,28 @@ const ReservationForm = () => {
           placeholder="Name"
           onChange={handleChange}
           value={formState.name}
+          required
         />
+        <br />
         <input
           type="text"
           name="phoneNumber"
           placeholder="Phone number"
           onChange={handleChange}
           value={formState.phoneNumber}
+          required
+        />
+        <br />
+        <input
+          type="date"
+          name="date"
+          onChange={handleChange}
+          value={formState.date}
         />
         <p>Total Price: 30$</p>
-        <button onClick={() => navigate("/reservation")} type="submit">
+
+
+        <button type="submit">
           Confirm Reservation
         </button>
       </form>
