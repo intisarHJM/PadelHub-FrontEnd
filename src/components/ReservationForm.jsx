@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom"
 const ReservationForm = () => {
   const navigate = useNavigate()
   const initialState = {
-    name: '',
-    phoneNumber: '',
-    date: '',
-    totalPrice: 30
+    name: "",
+    phoneNumber: "",
+    date: new Date(),
+    totalPrice: 30,
   }
 
   const [formState, setFormState] = useState(initialState)
@@ -19,7 +19,7 @@ const ReservationForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.post('http://localhost:3001/reservations', formState)
+      await axios.post("http://localhost:3001/reservations", formState)
 
       setFormState(initialState)
     } catch (error) {
@@ -46,8 +46,9 @@ const ReservationForm = () => {
           value={formState.phoneNumber}
         />
         <p>Total Price: 30$</p>
-        <button  onClick={()=>navigate('/reservation')}  type="submit">
-          Confirm Reservation</button>
+        <button onClick={() => navigate("/reservation")} type="submit">
+          Confirm Reservation
+        </button>
       </form>
     </div>
   )
