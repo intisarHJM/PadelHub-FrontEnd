@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import Nav from "./Nav"
 
 const Equipment = () => {
   // const { id } = useParams()
@@ -49,6 +50,7 @@ const Equipment = () => {
 
   return (
     <>
+    <Nav />
       <form onSubmit={handleSubmit}>
         <h1>Buy Tools!</h1>
 

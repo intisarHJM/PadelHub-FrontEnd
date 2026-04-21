@@ -15,6 +15,7 @@ import Court from "./components/Court"
 import ViewCount from "./components/View-count"
 import Equipment from "./pages/Equipment"
 import UpdatePassword from "./components/Update-Password"
+import Confirmation from "./components/Confirmation"
 
 const App = () => {
   const initialState = {
@@ -44,6 +45,7 @@ const App = () => {
               <Route path="/courts/:id" element={<ViewCount />} />
               <Route path="/equipment" element={<Equipment />} />
               <Route path="/update-password" element={<UpdatePassword />} />
+
             </>
           ) : (
             <Route path="/" element={<Welcome />} />
@@ -57,6 +59,8 @@ const App = () => {
           <Route path="/reservationForm" element={<ReservationForm />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/court-reviews/:id" element={<Review />} />
+          <Route path="/confirmation" element={<Confirmation/>} />
+
         </Routes>
       </main>
     </>
