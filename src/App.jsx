@@ -14,6 +14,7 @@ import Review from "./components/Review"
 import Court from "./components/Court"
 import ViewCount from "./components/View-count"
 
+
 const App = () => {
   const initialState = {
     email: "",
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/" element={<Welcome />} />
           {user ? (
             <>
+
               <Route path="/home" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/about" element={<About />} />
