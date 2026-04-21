@@ -6,7 +6,7 @@ const ReservationForm = () => {
   const initialState = {
     name: '',
     phoneNumber: '',
-    date: new Date(),
+    date: '',
     totalPrice: 30
   }
 
@@ -20,7 +20,7 @@ const ReservationForm = () => {
     event.preventDefault()
     try {
       await axios.post('http://localhost:3001/reservations', formState)
-    
+
       setFormState(initialState)
     } catch (error) {
       console.error("Error:", error)
