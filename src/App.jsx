@@ -8,6 +8,9 @@ import Profile from "./pages/Profile"
 import SignIn from "./pages/Sign-in"
 import Home from "./pages/Home"
 import About from "./pages/About"
+import ReservationForm from "./components/ReservationForm"
+import Reservation from "./components/Reservation"
+import Review from "./components/Review"
 
 const App = () => {
   const initialState = {
@@ -27,6 +30,8 @@ const App = () => {
     <>
       <main>
         <Routes>
+
+          <Route path="/" element={<Welcome />} />
           {user ? (
             <>
               <Route path="/home" element={<Home />} />
@@ -42,7 +47,12 @@ const App = () => {
             path="/sign-in"
             element={<SignIn setUser={setUser} user={user} />}
           />
+          <Route path="/reservationForm" element={<ReservationForm />} />
+           <Route path="/reservation" element={<Reservation />} />
+        <Route path="/court-reviews/:id" element={<Review />} />
         </Routes>
+
+
       </main>
     </>
   )
