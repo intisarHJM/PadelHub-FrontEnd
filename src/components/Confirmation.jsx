@@ -1,4 +1,3 @@
-
 import { useNavigate, useLocation } from "react-router-dom"
 import Nav from "../pages/Nav"
 
@@ -24,9 +23,12 @@ const Confirmation = () => {
       <div className="details">
         <p>Name:{res.owner?.username || "Guest"}</p>
         <p>Phone: {res.phoneNumber}</p>
+        <p>court name: {res.court.court_id}</p>
         <p>Date Reservation : {new Date(res.date).toLocaleDateString()}</p>
       </div>
-      <button onClick={() => navigate("/reservation")}>View All My Reservations</button>
+      <button onClick={() => navigate("/reservation")}>
+        View All My Reservations
+      </button>
     </div>
   )
 }

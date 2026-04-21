@@ -16,13 +16,11 @@ const Reservation = () => {
           return
         }
 
-
         const res = await axios.get(`http://localhost:3001/reservations`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
-
 
         setReservations(Array.isArray(res.data) ? res.data : [res.data])
         setLoading(false)
@@ -42,16 +40,19 @@ const Reservation = () => {
         {loading ? (
           <p>Loading...</p>
         ) : reservations && reservations.length > 0 ? (
-
           [...reservations].reverse().map((res, index) => (
-            <div key={res._id || index} >
+            <div key={res._id || index}>
               <h3>Reservation Details:</h3>
-              <p>Name: {res.owner?.username }</p>
+              <p>court name: {res.court.court_id}</p>
+              <p>Name: {res.owner?.username}</p>
               <p>Phone: {res.phoneNumber}</p>
-              <p>Date Reservation:{res.date ? new Date(res.date).toLocaleDateString() : ""}</p>
+              <p>
+                Date Reservation:
+                {res.date ? new Date(res.date).toLocaleDateString() : ""}
+              </p>
               <p>Time Reservation:{res.timeSlot || "8:00 PM - 10:00 PM"}</p>
               <p>Price: ${res.totalPrice}</p>
-              <p>Booked on: {res.createdAt?.split('T')[0]}</p>
+              <p>Booked on: {res.createdAt?.split("T")[0]}</p>
             </div>
           ))
         ) : (
