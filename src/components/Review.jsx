@@ -41,11 +41,10 @@ const Review = () => {
       )
 
       setReviews(res.data.court.reviews)
-
       setDescription('')
+      setRating(5)
     } catch (err) {
       console.error("Error:", err.response?.data)
-
     }
   }
 
@@ -58,10 +57,9 @@ const Review = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="add the description"
-
         />
         <br />
-         <label htmlFor="select-rating">Select a Rating:</label>
+        <label htmlFor="select-rating">Select a Rating:</label>
         <select value={rating} onChange={(e) => setRating(e.target.value)}>
           <option value="5">⭐⭐⭐⭐⭐ </option>
           <option value="4">⭐⭐⭐⭐ </option>
@@ -72,15 +70,13 @@ const Review = () => {
         <button type="submit">Send Review</button>
       </form>
 
-
       <h3>Reviews List:</h3>
       {reviews && reviews.length > 0 ? (
-
         [...reviews].reverse().map((rev, index) => (
           <div key={rev._id || index}>
-             <p>Description:{rev.description}</p>
-            <p>Rating:{rev.rating}</p>
-            <p>{rev.createdAt?.split('T')[0] }</p>
+            <p>Description: {rev.description}</p>
+            <p>Rating: {"⭐".repeat(Number(rev.rating))}</p>
+            <p>{rev.createdAt?.split('T')[0]}</p>
           </div>
         ))
       ) : (

@@ -19,7 +19,6 @@ const Nav = ({ user, handleLogOut }) => {
     <>
       <Link to="/about">about </Link>
       <Link to="/equipment"> equipments </Link>
-      <Link to="/courts"> courts </Link>
       <Link to="/home"> home </Link>
     </>
   )

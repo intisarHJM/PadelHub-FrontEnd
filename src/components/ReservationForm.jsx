@@ -3,20 +3,16 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { Calendar } from "primereact/calendar"
 
-import { InputMask } from "primereact/inputmask"
 
-const ReservationForm = () => {
+const ReservationForm = ({ courtId }) => {
   const navigate = useNavigate()
 
   const initialState = {
     name: "",
     phoneNumber: "",
-<<<<<<< HEAD
-    date: new Date(), // Stays as a Date object
-=======
     date: new Date(),
->>>>>>> 4ef2dc0e26d3e4757805ae708e0e7f7cfee901c6
     totalPrice: 30,
+    court: courtId
   }
 
   const [formState, setFormState] = useState(initialState)
@@ -25,23 +21,30 @@ const ReservationForm = () => {
     setFormState({ ...formState, [event.target.name]: event.target.value })
   }
 
-  // Specific handler for the Calendar since it doesn't use standard event.target
   const handleDateChange = (e) => {
     setFormState({ ...formState, date: e.value })
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    try {
-      await axios.post("http://localhost:3001/reservations", formState)
-<<<<<<< HEAD
-=======
 
->>>>>>> 4ef2dc0e26d3e4757805ae708e0e7f7cfee901c6
+
+    const token = localStorage.getItem("token")
+
+    try {
+
+      await axios.post(`http://localhost:3001/reservations/create`, formState, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
       setFormState(initialState)
-      navigate("/reservation") // Move navigation here so it only happens on success
+
+      navigate("/confirmation")
     } catch (error) {
-      console.error("Error:", error)
+      console.error("Error:", error.response?.data || error.message)
+
     }
   }
 
@@ -63,7 +66,6 @@ const ReservationForm = () => {
           onChange={handleChange}
           value={formState.phoneNumber}
         />
-<<<<<<< HEAD
         <br />
         <Calendar
           value={formState.date}
@@ -71,15 +73,21 @@ const ReservationForm = () => {
           dateFormat="mm/dd/yy"
           showIcon
         />
-        <p>Duration: 5AM - 5PM</p>
+
+        <label htmlFor="select-time">Select a Time:</label>
+        <select value=" " >
+          <option value="time-6">8:00 PM - 10:00 PM</option>
+          <option value="time-5">6:00 PM - 8:00 PM</option>
+          <option value="time-4">4:00 PM - 6:00 PM</option>
+          <option value="time-3">2:00 PM - 4:00 PM</option>
+          <option value="time-2">12:00 PM - 2:00 PM</option>
+          <option value="time-1">9:00 PM - 11:00 PM</option>
+        </select>
+
         <p>Price: ${formState.totalPrice}</p>
-        <button type="submit">Confirm Reservation</button>
-=======
-        <p>Total Price: 30$</p>
-        <button onClick={() => navigate("/reservation")} type="submit">
-          Confirm Reservation
-        </button>
->>>>>>> 4ef2dc0e26d3e4757805ae708e0e7f7cfee901c6
+
+
+        <button   type="submit">Confirm Reservation</button>
       </form>
     </div>
   )
