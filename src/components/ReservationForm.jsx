@@ -25,9 +25,14 @@ const ReservationForm = () => {
       const token = localStorage.getItem("token")
 
 
+      const reservationData = {
+        ...formState,
+        court: id
+      }
+
       await axios.post(
         `http://localhost:3001/reservations/${id}`,
-        formState,
+        reservationData,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
@@ -35,11 +40,10 @@ const ReservationForm = () => {
 
       setFormState(initialState)
 
-
       navigate("/reservation")
 
     } catch (error) {
-      console.error("Error creating reservation:", error)
+      console.error("Error creating reservation:", error.response?.data?.message || error.message)
 
     }
   }
@@ -71,13 +75,11 @@ const ReservationForm = () => {
           name="date"
           onChange={handleChange}
           value={formState.date}
+          required
         />
         <p>Total Price: 30$</p>
 
-
-        <button type="submit">
-          Confirm Reservation
-        </button>
+        <button  onClick={() => navigate("/reservation")}type="submit">Confirm Reservation</button>
       </form>
     </div>
   )
