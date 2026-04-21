@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { useParams } from "react-router-dom"
 
 const Review = () => {
   const { id } = useParams()
   const [reviews, setReviews] = useState([])
-  const [description, setDescription] = useState('')
+  const [description, setDescription] = useState("")
   const [rating, setRating] = useState(5)
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Review = () => {
       try {
         const token = localStorage.getItem("token")
         const res = await axios.get(`http://localhost:3001/courts/${id}`, {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         })
 
         setReviews(res.data.reviews || [])
@@ -31,7 +31,7 @@ const Review = () => {
 
       const newReviewData = {
         description: description,
-        rating: Number(rating)
+        rating: Number(rating),
       }
 
       const res = await axios.post(
@@ -41,7 +41,7 @@ const Review = () => {
       )
 
       setReviews(res.data.court.reviews)
-      setDescription('')
+      setDescription("")
       setRating(5)
     } catch (err) {
       console.error("Error:", err.response?.data)
@@ -76,7 +76,7 @@ const Review = () => {
           <div key={rev._id || index}>
             <p>Description: {rev.description}</p>
             <p>Rating: {"⭐".repeat(Number(rev.rating))}</p>
-            <p>{rev.createdAt?.split('T')[0]}</p>
+            <p>{rev.createdAt?.split("T")[0]}</p>
           </div>
         ))
       ) : (
