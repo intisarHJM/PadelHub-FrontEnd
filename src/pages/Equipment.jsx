@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import "../App.css"
+import Nav from "./Nav"
 
 const Equipment = () => {
   // const { id } = useParams()
@@ -50,11 +51,12 @@ const Equipment = () => {
 
   return (
     <>
-    <Nav />
+      <Nav />
       <form onSubmit={handleSubmit}>
         <h1>Buy Tools!</h1>
         <div className="equipments-images">
-          <img id="racket"
+          <img
+            id="racket"
             src="https://i.pinimg.com/736x/9a/ad/00/9aad004125143596006b9d5e7fa4c812.jpg"
             alt="Padel Gear"
           />
@@ -85,7 +87,6 @@ const Equipment = () => {
         />
 
         <button type="submit">Submit</button>
-
       </form>
     </>
   )
