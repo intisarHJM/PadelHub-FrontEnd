@@ -7,7 +7,7 @@ const Court = ({ court }) => {
     <div className="court-card">
       <img src={court.court_img} alt={court.courtType} />
       <div className="court-details">
-        <h3>Court id : {court._id}</h3>
+        <h3>Court id : {court.court_id}</h3>
         {/* maybe we will need it later */}
         {/* <p>Type: {court.courtType}</p>
         <p>Price: {court.price} BHD</p> */}
