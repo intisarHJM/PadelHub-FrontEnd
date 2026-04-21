@@ -1,32 +1,32 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
+// import { useState, useEffect } from "react"
+// import axios from "axios"
 
-const Court = () => {
-  // nav = useNavigate
-  useEffect(() => {
-    const getCourt = async () => {
-      try {
-        const token = localStorage.getItem("token")
+// const Court = () => {
+//   // nav = useNavigate
+//   useEffect(() => {
+//     const getCourt = async () => {
+//       try {
+//         const token = localStorage.getItem("token")
 
-        if (!token) {
-          console.error("No token found")
-          return
-        }
+//         if (!token) {
+//           console.error("No token found")
+//           return
+//         }
 
-        const response = await axios.post(`http://localhost:3001/courts`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+//         const response = await axios.post(`http://localhost:3001/courts`, {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         })
 
-        console.log(token)
-      } catch (error) {
-        console.error("Error: " + error)
-      }
-    }
-  }, [])
+//         console.log(token)
+//       } catch (error) {
+//         console.error("Error: " + error)
+//       }
+//     }
+//   }, [])
 
-  return <></>
-}
+//   return <></>
+// }
 
-export default Court
+// export default Court

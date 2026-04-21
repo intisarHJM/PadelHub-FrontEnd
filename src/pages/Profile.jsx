@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import Nav from "./Nav"
 
 const Profile = () => {
   const [userData, setUserData] = useState(null)
+
+  // no need for this code
+  // const handleChange = () => {
+  //   setUserData({ ...userData, [event.target.name]: event.target.value })
+  // }
 
   useEffect(() => {
     const getUserData = async () => {
@@ -32,12 +38,15 @@ const Profile = () => {
   }, [])
 
   return (
-    <main className="profile-main">
-      <h1>{userData?.username}'s profile</h1>
-      <h3>E-mail: {userData?.email}</h3>
-      <h3>phone: {userData?.phoneNum}</h3>
-      <button>Reservations</button>
-    </main>
+    <>
+      <Nav />
+      <main className="profile-main">
+        <h1>{userData?.username}'s profile</h1>
+        <h3>E-mail: {userData?.email}</h3>
+        <h3>phone: {userData?.phoneNum}</h3>
+        <button>Reservations</button>
+      </main>
+    </>
   )
 }
 

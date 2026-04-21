@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom'
-
+import { Link } from "react-router-dom"
 
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
@@ -18,23 +17,17 @@ const Nav = ({ user, handleLogOut }) => {
 
   const publicOptions = (
     <>
-
-      <Link to="/about">about</Link>
-      <Link to="/equipment">equipments</Link>
-      <Link to="/court">courts</Link>
-
-
+      <Link to="/about">about </Link>
+      <Link to="/equipment"> equipments </Link>
+      <Link to="/courts"> courts </Link>
+      <Link to="/home"> home </Link>
     </>
   )
 
   return (
     <header>
-      <Link to="/">
-
-      </Link>
-      <nav>
-        {user ? userOptions : publicOptions}
-      </nav>
+      <Link to="/"></Link>
+      <nav>{user ? userOptions : publicOptions}</nav>
     </header>
   )
 }
