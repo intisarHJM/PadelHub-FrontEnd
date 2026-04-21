@@ -35,7 +35,6 @@ const Reservation = () => {
   return (
     <div className="reservation-view">
       <h1>My Reservations</h1>
-
       <div className="reservation-list">
         {loading ? (
           <p>Loading...</p>
