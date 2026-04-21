@@ -12,6 +12,7 @@ import ReservationForm from "./components/ReservationForm"
 import Reservation from "./components/Reservation"
 import Review from "./components/Review"
 
+
 const App = () => {
   const initialState = {
     email: "",
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/" element={<Welcome />} />
           {user ? (
             <>
+
               <Route path="/home" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/about" element={<About />} />
