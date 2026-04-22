@@ -1,7 +1,6 @@
 /* welcome page */
 
 
-
 .welcome-page {
   background:
     linear-gradient(rgba(11, 18, 33, 0.6), rgba(11, 18, 33, 0.7)),
@@ -388,7 +387,7 @@ Sign-up page  */
   border: none;
   padding: 18px;
   border-radius: 50px;
-  font-size: 1.2rem;
+  font-size: smaller;
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(204, 255, 0, 0.2);
@@ -520,7 +519,7 @@ Sign-up page  */
 }
 
 .logo span {
-  color: #ccff00; 
+  color: #ccff00;
 }
 
 
