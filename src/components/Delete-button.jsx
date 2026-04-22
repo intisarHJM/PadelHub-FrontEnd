@@ -1,33 +1,29 @@
 import axios from "axios"
-// import { useNavigate } from "react-router-dom"
 
-const Delete = ({ url }) => {
-  // const nav = useNavigate()
+const Delete = ({ url, onDeleteSuccess }) => {
 
   const deleteFunc = async () => {
     try {
       const token = localStorage.getItem("token")
-
       const response = await axios.delete(`${url}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
 
-      console.log(response)
+      if (response.status === 200) {
+        if (onDeleteSuccess) {
+          onDeleteSuccess()
+        }
+      }
     } catch (error) {
       console.log("Error: " + error)
     }
   }
 
   return (
-    <>
-      <button
-        onClick={() => {
-          deleteFunc()
-        }}
-      >
-        Delete
-      </button>
-    </>
+    <button className="delete-btn-action" onClick={() => deleteFunc()}>
+      Delete_
+    </button>
   )
 }
+
 export default Delete

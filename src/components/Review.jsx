@@ -15,7 +15,6 @@ const Review = () => {
         const res = await axios.get(`http://localhost:3001/courts/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-
         setReviews(res.data.reviews || [])
       } catch (err) {
         console.log("Error:", err)
@@ -28,18 +27,15 @@ const Review = () => {
     e.preventDefault()
     try {
       const token = localStorage.getItem("token")
-
       const newReviewData = {
         description: description,
         rating: Number(rating),
       }
-
       const res = await axios.post(
         `http://localhost:3001/courts/${id}/reviews`,
         newReviewData,
         { headers: { Authorization: `Bearer ${token}` } }
       )
-
       setReviews(res.data.court.reviews)
       setDescription("")
       setRating(5)
@@ -49,39 +45,49 @@ const Review = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h3>Add Review</h3>
-        <label htmlFor="description">Add the Description:</label>
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="add the description"
-        />
-        <br />
-        <label htmlFor="select-rating">Select a Rating:</label>
-        <select value={rating} onChange={(e) => setRating(e.target.value)}>
-          <option value="5">⭐⭐⭐⭐⭐ </option>
-          <option value="4">⭐⭐⭐⭐ </option>
-          <option value="3">⭐⭐⭐</option>
-          <option value="2">⭐⭐ </option>
-          <option value="1">⭐</option>
-        </select>
-        <button type="submit">Send Review</button>
+    <div className="reviews-container">
+      <form className="review-form" onSubmit={handleSubmit}>
+        <h3 className="sub-title">Add Review_</h3>
+
+        <div className="input-field">
+          <label>Description_</label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Write your experience here_"
+          />
+        </div>
+
+        <div className="input-field">
+          <label>Rating_</label>
+          <select value={rating} onChange={(e) => setRating(e.target.value)}>
+            <option value="5">⭐⭐⭐⭐⭐ </option>
+            <option value="4">⭐⭐⭐⭐ </option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="2">⭐⭐ </option>
+            <option value="1">⭐</option>
+          </select>
+        </div>
+
+        <button type="submit" className="btn btn-primary">Send Review_</button>
       </form>
 
-      <h3>Reviews List:</h3>
-      {reviews && reviews.length > 0 ? (
-        [...reviews].reverse().map((rev, index) => (
-          <div key={rev._id || index}>
-            <p>Description: {rev.description}</p>
-            <p>Rating: {"⭐".repeat(Number(rev.rating))}</p>
-            <p>{rev.createdAt?.split("T")[0]}</p>
-          </div>
-        ))
-      ) : (
-        <p>No reviews </p>
-      )}
+      <div className="reviews-list-section">
+        <h3 className="sub-title">Reviews List_</h3>
+        {reviews && reviews.length > 0 ? (
+          [...reviews].reverse().map((rev, index) => (
+            <div key={rev._id || index} className="review-item-card">
+              <div className="review-card-header">
+                <span className="stars-display">{"⭐".repeat(Number(rev.rating))}</span>
+                <span className="review-date">{rev.createdAt?.split("T")[0]}</span>
+              </div>
+              <p className="review-text">{rev.description}</p>
+            </div>
+          ))
+        ) : (
+          <p className="status-msg">No reviews yet_</p>
+        )}
+      </div>
     </div>
   )
 }

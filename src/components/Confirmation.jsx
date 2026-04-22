@@ -8,27 +8,50 @@ const Confirmation = () => {
 
   if (!res) {
     return (
-      <div className="confirm-page">
+      <div className="page-layout">
         <Nav />
-        <h1>No Reservation Found</h1>
-        <button onClick={() => navigate("/")}>Go Home</button>
+        <h1 className="form-title">No Reservation Found_</h1>
+        <button className="btn btn-primary" onClick={() => navigate("/")}>Go Home_</button>
       </div>
     )
   }
 
   return (
-    <div className="confirm-page">
+    <div className="page-layout">
       <Nav />
-      <h1>Successful Reservation ✅</h1>
-      <div className="details">
-        <p>Name:{res.owner?.username || "Guest"}</p>
-        <p>Phone: {res.phoneNumber}</p>
-        <p>court name: {res.court.court_id}</p>
-        <p>Date Reservation : {new Date(res.date).toLocaleDateString()}</p>
+
+      <div className="form-card confirm-card">
+        <div className="success-icon">✅</div>
+        <h1 className="sub-title">Successful Reservation_</h1>
+
+        <div className="confirm-details-list">
+          <div className="confirm-item">
+            <label>Name_</label>
+            <p>{res.owner?.username || "Guest"}</p>
+          </div>
+          <div className="confirm-item">
+            <label>Phone_</label>
+            <p>{res.phoneNumber}</p>
+          </div>
+          <div className="confirm-item">
+            <label>Court Name_</label>
+            <p>{res.court?.court_id || "N/A"}</p>
+          </div>
+          <div className="confirm-item">
+            <label>Reservation Date_</label>
+            <p>{new Date(res.date).toLocaleDateString()}</p>
+          </div>
+        </div>
+
+        <div className="button-group">
+          <button className="btn btn-primary" onClick={() => navigate("/reservation")}>
+            View My Reservations_
+          </button>
+          <button className="btn btn-secondary" onClick={() => navigate("/")}>
+            Back To Home_
+          </button>
+        </div>
       </div>
-      <button onClick={() => navigate("/reservation")}>
-        View All My Reservations
-      </button>
     </div>
   )
 }
