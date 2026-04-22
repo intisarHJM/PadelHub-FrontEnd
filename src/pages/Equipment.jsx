@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import "../App.css"
 import Nav from "./Nav"
+import OrderConfirmed from "../components/OrderConfirmed"
 
 const Equipment = () => {
   // const { id } = useParams()
@@ -41,6 +42,7 @@ const Equipment = () => {
           },
         }
       )
+
       console.log(response)
       console.log(token)
       console.log(token.id)
@@ -75,7 +77,7 @@ const Equipment = () => {
         <select name="toolName" onChange={handleChange} id="toolName">
           <option value="first-tool">Padel Gear</option>
           <option value="second-tool">Balls</option>
-          <option value="third-tool">Sport t-shirt</option>
+          <option value="third-tool">Sport T-shirt</option>
         </select>
 
         <label htmlFor="quantity">Quantity</label>
@@ -88,6 +90,8 @@ const Equipment = () => {
 
         <button type="submit">Submit</button>
       </form>
+
+      <h2>my cart: {equipment.quantity * equipment.price}</h2>
     </>
   )
 }

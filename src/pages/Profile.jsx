@@ -49,10 +49,7 @@ const Profile = () => {
         <button onClick={() => navigate("/reservation")} type="button">
           Reservations
         </button>
-        <button
-          type="button"
-          onClick={() => navigate(`/update-password`)}
-        >
+        <button type="button" onClick={() => navigate("/update-password")}>
           update password
         </button>
       </div>

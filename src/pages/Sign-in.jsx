@@ -28,7 +28,7 @@ const SignIn = ({ setUser }) => {
       )
 
       localStorage.setItem("token", res.data.token)
-      localStorage.setItem("userID", res.data.user.id)
+       localStorage.setItem("userID", res.data.user.id)
 
       setUser(res.data.user)
       nav("/home")

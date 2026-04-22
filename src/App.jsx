@@ -1,5 +1,5 @@
 import "./App.css"
-import React from "react"
+import React, { useEffect } from "react"
 import SignUp from "./pages/SignUp"
 import { useState } from "react"
 import { Route, Routes } from "react-router"
@@ -31,6 +31,14 @@ const App = () => {
     })
   }
 
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token")
+  //   if (token) {
+  //     console.log(atob(token))
+  //     // setUser(JSON.parse(atob(token).split("."[1])).payload)
+  //   }
+  // }, [])
+
   return (
     <>
       <main>
@@ -44,7 +52,10 @@ const App = () => {
               <Route path="/courts" element={<Court />} />
               <Route path="/courts/:id" element={<ViewCount />} />
               <Route path="/equipment" element={<Equipment />} />
-              <Route path="/update-password" element={<UpdatePassword />} />
+              <Route
+                path="/update-password"
+                element={<UpdatePassword user={user} />}
+              />
             </>
           ) : (
             <Route path="/" element={<Welcome />} />
