@@ -6,9 +6,9 @@ const Nav = ({ user, handleLogOut }) => {
   if (user) {
     userOptions = (
       <div className="nav-user-profile">
-        <span className="welcome-msg">Welcome, <span>{user.name}_</span></span>
+        <span className="welcome-msg">Welcome  <span>{user.name}</span></span>
         <Link onClick={handleLogOut} to="/" className="signout-btn">
-          Sign Out_
+          Sign Out
         </Link>
       </div>
     )
@@ -16,11 +16,11 @@ const Nav = ({ user, handleLogOut }) => {
 
   const publicOptions = (
     <div className="nav-links">
-      <Link to="/home">Home_</Link>
-      <Link to="/about">About_</Link>
-      <Link to="/reservation">Reservation_</Link>
-      <Link to="/equipment">Equipments_</Link>
-      <Link to="/profile">Profile_</Link>
+      <Link to="/home">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/reservation">Reservation</Link>
+      <Link to="/equipment">Equipments</Link>
+      <Link to="/profile">Profile</Link>
     </div>
   )
 
@@ -28,7 +28,7 @@ const Nav = ({ user, handleLogOut }) => {
     <header className="main-nav-header">
       <div className="nav-container">
         <div className="logo">
-          <Link to="/">Padel<span>Hub_</span></Link>
+          <Link to="/">Padel<span>Hub</span></Link>
         </div>
         <nav className="nav-content">
           {user ? userOptions : publicOptions}

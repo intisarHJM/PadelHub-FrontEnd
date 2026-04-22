@@ -26,29 +26,29 @@ const Confirmation = () => {
 
         <div className="confirm-details-list">
           <div className="confirm-item">
-            <label>Name_</label>
+            <label>Name</label>
             <p>{res.owner?.username || "Guest"}</p>
           </div>
           <div className="confirm-item">
-            <label>Phone_</label>
+            <label>Phone</label>
             <p>{res.phoneNumber}</p>
           </div>
           <div className="confirm-item">
-            <label>Court Name_</label>
+            <label>Court Name</label>
             <p>{res.court?.court_id || "N/A"}</p>
           </div>
           <div className="confirm-item">
-            <label>Reservation Date_</label>
+            <label>Reservation Date</label>
             <p>{new Date(res.date).toLocaleDateString()}</p>
           </div>
         </div>
 
         <div className="button-group">
           <button className="btn btn-primary" onClick={() => navigate("/reservation")}>
-            View My Reservations_
+            View My Reservations
           </button>
           <button className="btn btn-secondary" onClick={() => navigate("/")}>
-            Back To Home_
+            Back To Home
           </button>
         </div>
       </div>
