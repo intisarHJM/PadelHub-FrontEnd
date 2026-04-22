@@ -297,4 +297,134 @@ margin-left: 20px;
   width: 150px;
   height: 200px;
 }
+/*
+Sign-up page  */
 
+
+
+/* الحاوية الكبرى مع الخلفية المطلوبة */
+.signup-container {
+  background: linear-gradient(
+      rgba(11, 18, 33, 0.4),
+      rgba(11, 18, 33, 0.7)
+    ),
+    url('https://i.pinimg.com/736x/23/ea/cf/23eacf1f6f28a52cb0f93d9e91dc7db9.jpg') no-repeat center center;
+
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; /* وضع العناصر في أسفل الشاشة */
+  padding-bottom: 50px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+}
+
+.signup-form {
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#signUp-title {
+  color: #ccff00; /* لون البادل المعتمد */
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+/* الكرت الموحد (Glassmorphism) */
+.form-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* تنسيق الحقول داخل الكرت */
+.input-field {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field:last-child {
+  margin-bottom: 0;
+}
+
+.input-field label {
+  color: #ccff00;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.input-field input {
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 0;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.input-field input:focus {
+  border-bottom-color: #ccff00;
+}
+
+/* تنسيق رابط الانتقال */
+.signin-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.signin-link:hover {
+  color: #ccff00;
+}
+
+/* الزر الأساسي */
+.signup-button {
+  background-color: #ccff00;
+  color: #0b1221;
+  border: none;
+  padding: 18px;
+  width: 100%;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(204, 255, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.signup-button:hover {
+  background-color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* لضمان تناسب الشاشات الصغيرة */
+@media (max-width: 480px) {
+  #signUp-title {
+    font-size: 2rem;
+  }
+  .form-card {
+    padding: 20px;
+  }
+}
