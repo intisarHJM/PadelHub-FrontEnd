@@ -16,11 +16,11 @@ const Nav = ({ user, handleLogOut }) => {
 
   const publicOptions = (
     <div className="nav-links">
-      <Link to="/home">Home_</Link>
-      <Link to="/about">About_</Link>
-      <Link to="/reservation">Reservation_</Link>
-      <Link to="/equipment">Equipments_</Link>
-      <Link to="/profile">Profile_</Link>
+      <Link to="/home">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/reservation">Reservation</Link>
+      <Link to="/equipment">Equipments</Link>
+      <Link to="/profile">Profile</Link>
     </div>
   )
 
@@ -28,7 +28,7 @@ const Nav = ({ user, handleLogOut }) => {
     <header className="main-nav-header">
       <div className="nav-container">
         <div className="logo">
-          <Link to="/">Padel<span>Hub_</span></Link>
+          <Link to="/">Padel<span>Hub</span></Link>
         </div>
         <nav className="nav-content">
           {user ? userOptions : publicOptions}
