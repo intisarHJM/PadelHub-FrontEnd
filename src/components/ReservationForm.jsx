@@ -1,21 +1,28 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { Calendar } from "primereact/calendar"
 
-const ReservationForm = ({ courtId }) => {
+const ReservationForm = ({ courtId, price }) => {
   const navigate = useNavigate()
 
   const initialState = {
-    name: "",
     phoneNumber: "",
     date: new Date(),
-    timeSlot: "8:00 PM - 10:00 PM", // أضفنا الوقت للحالة الابتدائية
-    totalPrice: 30,
+    timeSlot: "8:00 PM - 10:00 PM",
+    totalPrice: price,
     court: courtId,
   }
 
   const [formState, setFormState] = useState(initialState)
+
+  useEffect(() => {
+    setFormState((prev) => ({
+      ...prev,
+      totalPrice: price,
+      court: courtId
+    }))
+  }, [price, courtId])
 
   const handleChange = (event) => {
     setFormState({ ...formState, [event.target.name]: event.target.value })
@@ -31,7 +38,6 @@ const ReservationForm = ({ courtId }) => {
     const id = localStorage.getItem("userID")
 
     try {
-      // تصحيح: قمنا بتعريف المتغير response هنا ليتم استخدامه في الـ navigate
       const response = await axios.post(
         `http://localhost:3001/reservations/${id}`,
         formState,
@@ -43,7 +49,6 @@ const ReservationForm = ({ courtId }) => {
       )
 
       setFormState(initialState)
-      // الآن سيتم إرسال البيانات بنجاح لصفحة التأكيد
       navigate("/confirmation", { state: { res: response.data } })
     } catch (error) {
       console.error("Error:", error.response?.data || error.message)
@@ -51,49 +56,54 @@ const ReservationForm = ({ courtId }) => {
   }
 
   return (
-    <div>
-      <h1>Reservation Form</h1>
-      <form onSubmit={handleSubmit}>
-        {/* <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          onChange={handleChange}
-          value={formState.name}
-        /> */}
-        <input
-          type="text"
-          name="phoneNumber"
-          placeholder="Phone number"
-          onChange={handleChange}
-          value={formState.phoneNumber}
-        />
-        <br />
-        <Calendar
-          value={formState.date}
-          onChange={handleDateChange}
-          dateFormat="mm/dd/yy"
-          showIcon
-        />
+    <div className="res-form-container">
+      <form className="glass-form" onSubmit={handleSubmit}>
+        <h3 className="sub-title">Book This Court_</h3>
 
-        <br />
-        <label htmlFor="timeSlot">Select a Time:</label>
-        {/* تصحيح: ربط الـ select بالـ onChange والـ value لمنع التحذير */}
-        <select
-          name="timeSlot"
-          value={formState.timeSlot}
-          onChange={handleChange}
-        >
-          <option value="8:00 PM - 10:00 PM">8:00 PM - 10:00 PM</option>
-          <option value="6:00 PM - 8:00 PM">6:00 PM - 8:00 PM</option>
-          <option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option>
-          <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
-          <option value="12:00 PM - 2:00 PM">12:00 PM - 2:00 PM</option>
-          <option value="9:00 PM - 11:00 PM">9:00 PM - 11:00 PM</option>
-        </select>
+        <div className="input-field">
+          <label>Phone Number_</label>
+          <input
+            type="text"
+            name="phoneNumber"
+            placeholder="Enter phone number_"
+            onChange={handleChange}
+            value={formState.phoneNumber}
+            required
+          />
+        </div>
 
-        <p>Price: ${formState.totalPrice}</p>
-        <button type="submit">Confirm Reservation</button>
+        <div className="input-field">
+          <label>Select Date_</label>
+          <Calendar
+            value={formState.date}
+            onChange={handleDateChange}
+            dateFormat="mm/dd/yy"
+            showIcon
+            className="custom-calendar"
+          />
+        </div>
+
+        <div className="input-field">
+          <label>Time Slot_</label>
+          <select
+            name="timeSlot"
+            value={formState.timeSlot}
+            onChange={handleChange}
+          >
+            <option value="8:00 PM - 10:00 PM">8:00 PM - 10:00 PM</option>
+            <option value="6:00 PM - 8:00 PM">6:00 PM - 8:00 PM</option>
+            <option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option>
+            <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
+            <option value="12:00 PM - 2:00 PM">12:00 PM - 2:00 PM</option>
+            <option value="9:00 PM - 11:00 PM">9:00 PM - 11:00 PM</option>
+          </select>
+        </div>
+
+        <div className="price-summary">
+          <p>Total Price_ <span>{formState.totalPrice} BHD</span></p>
+        </div>
+
+        <button type="submit" className="btn btn-primary">Confirm Reservation_</button>
       </form>
     </div>
   )

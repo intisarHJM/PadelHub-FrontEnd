@@ -11,10 +11,7 @@ const PurchaseHistory = () => {
         const token = localStorage.getItem("token")
         const id = localStorage.getItem("userID")
 
-        if (!token) {
-          console.error("No token found")
-          return
-        }
+        if (!token) return
 
         const response = await axios.get(
           `http://localhost:3001/user/purchase-history/${id}`,
@@ -24,8 +21,6 @@ const PurchaseHistory = () => {
             },
           }
         )
-        console.log(items)
-        console.log(response)
         setItems(response.data)
       } catch (error) {
         console.error("Error: " + error)
@@ -36,19 +31,28 @@ const PurchaseHistory = () => {
   }, [])
 
   return (
-    <>
+    <div className="page-layout">
       <Nav />
-      <h1>purchase</h1>
+      <h1 className="form-title">Purchase History_</h1>
 
-      {items.map((item) => (
-        <ul key={item._id}>
-          <li>
-            {item.quantity} {item.toolName}, purchased at{" "}
-            {item.createdAt.split("T")[0]}
-          </li>
-        </ul>
-      ))}
-    </>
+      <div className="history-list-container">
+        {items.length > 0 ? (
+          [...items].reverse().map((item) => (
+            <div key={item._id} className="history-card-item">
+              <div className="history-main-info">
+                <h3>{item.toolName}_</h3>
+                <p>Purchased on_ <span>{item.createdAt.split("T")[0]}</span></p>
+              </div>
+              <div className="history-status">
+                <span className="qty-pill">Qty: {item.quantity}</span>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="status-msg">No purchase history found_</div>
+        )}
+      </div>
+    </div>
   )
 }
 

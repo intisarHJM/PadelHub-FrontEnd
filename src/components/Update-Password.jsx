@@ -1,17 +1,16 @@
 import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import Nav from "../pages/Nav"
 
-const UpdatePassword = ({ user }) => {
+const UpdatePassword = () => {
   const initialState = {
     oldPassword: "",
     newPassword: "",
-    // confirmPassword: "",
   }
 
   const [password, setPassword] = useState(initialState)
-  navigation = useNavigate()
-
+  const navigate = useNavigate()
   const id = localStorage.getItem("userID")
 
   const handleChange = (event) => {
@@ -23,63 +22,61 @@ const UpdatePassword = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    // if (password.newPassword !== password.confirmPassword) {
-    //   return alert("New passwords do not match!")
-    // }
-
     try {
       const token = localStorage.getItem("token")
-
       const { oldPassword, newPassword } = password
 
-      const response = await axios.put(
+      await axios.put(
         `http://localhost:3001/auth/update-password/${id}`,
         { oldPassword, newPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       )
 
       setPassword(initialState)
-      alert("password successfully updated")
+      alert("Password successfully updated_")
+      navigate("/profile")
     } catch (error) {
       console.log("Error: " + error)
     }
   }
 
   return (
-    <>
-      <h1>Update password</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="oldPass"> Old password </label>
-        <input
-          type="password"
-          name="oldPassword"
-          id="oldPass"
-          onChange={handleChange}
-          value={password.oldPassword}
-        />
+    <div className="page-layout">
+      <Nav />
+      <h1 className="form-title">Update Password_</h1>
 
-        <label htmlFor="newPass"> New password </label>
-        <input
-          type="password"
-          id="newPass"
-          name="newPassword"
-          onChange={handleChange}
-          value={password.newPassword}
-        />
-        {/*
-        <label htmlFor="confirmPass"> Confirm password </label>
-        <input type="password" id="confirmPass" onChange={handleChange} /> */}
-        <button
-          type="submit"
-          onClick={() =>
-            navigation("/profile") && alert("password successfully updated")
-          }
-        >
-          Update
+      <form className="form-card" onSubmit={handleSubmit}>
+        <div className="input-field">
+          <label htmlFor="oldPass">Old Password_</label>
+          <input
+            type="password"
+            name="oldPassword"
+            id="oldPass"
+            placeholder="Enter old password_"
+            onChange={handleChange}
+            value={password.oldPassword}
+            required
+          />
+        </div>
+
+        <div className="input-field">
+          <label htmlFor="newPass">New Password_</label>
+          <input
+            type="password"
+            id="newPass"
+            name="newPassword"
+            placeholder="Enter new password_"
+            onChange={handleChange}
+            value={password.newPassword}
+            required
+          />
+        </div>
+
+        <button type="submit" className="btn btn-primary">
+          Update Now_
         </button>
       </form>
-    </>
+    </div>
   )
 }
 
