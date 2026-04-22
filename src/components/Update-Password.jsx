@@ -9,6 +9,7 @@ const UpdatePassword = () => {
 
   const [password, setPassword] = useState(initialState)
 
+
   const handleChange = (event) => {
     setPassword({
       ...password,
@@ -20,10 +21,11 @@ const UpdatePassword = () => {
     e.preventDefault()
     try {
       const token = localStorage.getItem("token")
-      const id = localStorage.getItem("userID")
+      const id = localStorage.getItem("user._id")
+
       const response = await axios.post(
-        `http://localhost:3001/auth/update-password/${id}`,
-        password,
+        `http://localhost:3001/auth/update-password/${id}`,{
+        password},
         { headers: { Authorization: `Bearer ${token}` } }
       )
 
