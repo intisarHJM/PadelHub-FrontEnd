@@ -273,7 +273,7 @@ input#password {
 /*
 Sign-up page  */
 
-/* الحاوية الكبرى مع الخلفية المطلوبة */
+
 .signup-container {
   background:
     linear-gradient(rgba(11, 18, 33, 0.4), rgba(11, 18, 33, 0.7)),
@@ -285,7 +285,7 @@ Sign-up page  */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end; /* وضع العناصر في أسفل الشاشة */
+  justify-content: flex-end;
   padding-bottom: 50px;
   font-family: "Segoe UI", Roboto, sans-serif;
   overflow: hidden;
@@ -300,14 +300,14 @@ Sign-up page  */
 }
 
 #signUp-title {
-  color: #ccff00; /* لون البادل المعتمد */
+  color: #ccff00;
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 25px;
   text-transform: uppercase;
 }
 
-/* الكرت الموحد (Glassmorphism) */
+
 .form-card {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(15px);
@@ -319,7 +319,7 @@ Sign-up page  */
   margin-bottom: 20px;
 }
 
-/* تنسيق الحقول داخل الكرت */
+
 .input-field {
   margin-bottom: 20px;
   display: flex;
@@ -354,7 +354,7 @@ Sign-up page  */
   border-bottom-color: #ccff00;
 }
 
-/* تنسيق رابط الانتقال */
+
 .signin-link {
   color: #ffffff;
   text-decoration: none;
@@ -368,7 +368,7 @@ Sign-up page  */
   color: #ccff00;
 }
 
-/* الزر الأساسي */
+
 .signup-button {
   background-color: #ccff00;
   color: #0b1221;
@@ -406,9 +406,9 @@ Sign-up page  */
 
 /* home page */
 
-/* --- Home Container --- */
+
 .home-container {
-  /* الخلفية ثابتة وتغطي كامل الشاشة */
+
   background:
     linear-gradient(rgba(11, 18, 33, 0.7), rgba(11, 18, 33, 0.9)),
     url("https://i.pinimg.com/1200x/cb/53/f8/cb53f8526a879d00ecd86e7c82adb50c.jpg")
@@ -422,10 +422,10 @@ Sign-up page  */
   flex-direction: column;
 }
 
-/* --- Navigation Bar (الثابت) --- */
+
 .main-nav-header {
   width: 100%;
-  position: fixed; /* ثابت في القمة */
+  position: fixed;
   top: 0;
   left: 0;
 
@@ -439,17 +439,17 @@ Sign-up page  */
   justify-content: space-between;
   align-items: center;
   padding: 15px 5%;
-  height: 70px; /* توحيد الطول للـ Nav */
+  height: 70px;
 }
 
-/* --- Hero Section --- */
+
 .home-hero {
   height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 70px; /* نفس طول الـ Nav عشان ما يغطي الكلام */
+  padding-top: 70px;
   text-align: center;
 }
 
@@ -463,7 +463,7 @@ Sign-up page  */
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* --- Courts Section --- */
+
 .courts-section {
   flex-grow: 1;
   padding: 40px 5%;
@@ -493,7 +493,7 @@ Sign-up page  */
   padding-bottom: 80px;
 }
 
-/* --- Nav Links & Buttons Style --- */
+
 .nav-links {
   display: flex;
   gap: 20px;
@@ -509,19 +509,7 @@ Sign-up page  */
 }
 
 
-
-
-
-
 /* Nav */
-
-
-
-
-
-
-
-/* تصميم اللوجو */
 .logo a {
   color: #ffffff;
   text-decoration: none;
@@ -532,7 +520,7 @@ Sign-up page  */
 }
 
 .logo span {
-  color: #ccff00; /* اللون الفسفوري */
+  color: #ccff00; 
 }
 
 
