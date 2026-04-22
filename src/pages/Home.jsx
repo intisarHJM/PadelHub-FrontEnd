@@ -15,8 +15,6 @@ const Home = () => {
         const res = await axios.get("http://localhost:3001/courts", {
           headers: { Authorization: `Bearer ${token}` },
         })
-        // to make sure it run
-        console.log(token)
         setCourts(res.data.allCourts)
       } catch (error) {
         console.error("Error fetching courts:", error)
@@ -26,28 +24,34 @@ const Home = () => {
   }, [])
 
   return (
-    <>
-      <div className="home-header">
+    <div className="home-container">
+      {/* القسم العلوي المضيء */}
+      <header className="home-hero">
         <Nav />
-        <h1>home </h1>
+        <div className="hero-content">
+      
+          <p>Available Padel Courts</p>
+        </div>
+      </header>
 
-      </div>
+      {/* قسم الملاعب */}
+      <main className="courts-section">
+        <div className="section-title">
+          <h2>Reserve a court below</h2>
+          <div className="underline"></div>
+        </div>
 
-      <div>
-        <header>
-          <h1>Available Padel Courts</h1>
-          <p> Reserve a court is below</p>
-        </header>
-
-        <section>
+        <div className="courts-grid">
           {courts.length > 0 ? (
             courts.map((court) => <Court key={court._id} court={court} />)
           ) : (
-            <p>No courts available!</p>
+            <div className="no-courts">
+              <p>No courts available at the moment!</p>
+            </div>
           )}
-        </section>
-      </div>
-    </>
+        </div>
+      </main>
+    </div>
   )
 }
 export default Home

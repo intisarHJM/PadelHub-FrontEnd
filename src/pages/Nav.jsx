@@ -5,33 +5,37 @@ const Nav = ({ user, handleLogOut }) => {
 
   if (user) {
     userOptions = (
-      <>
-        <h3>Welcome {user.name}!</h3>
-
-        <Link onClick={handleLogOut} to="/">
+      <div className="nav-user-profile">
+        <span className="welcome-msg">Welcome, <span>{user.name}</span>!</span>
+        <Link onClick={handleLogOut} to="/" className="signout-btn">
           Sign Out
         </Link>
-      </>
+      </div>
     )
   }
 
   const publicOptions = (
     <div className="nav-links">
-      <Link to="/about">about </Link>
-      <Link to="/equipment"> equipments </Link>
-      <Link to="/home"> home </Link>
-      <Link to="/reservation"> Reservation </Link>
-      <Link to="/profile"> Profile </Link>
+      <Link to="/home">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/reservation">Reservation</Link>
+      <Link to="/equipment">Equipments</Link>
+      <Link to="/profile">Profile</Link>
     </div>
   )
 
   return (
-    <>
-      <header>
-        <Link to="/"></Link>
-        <nav>{user ? userOptions : publicOptions}</nav>
-      </header>
-    </>
+    <header className="main-nav-header">
+      <div className="nav-container">
+        <div className="logo">
+          <Link to="/">Padel<span>Hub</span></Link>
+        </div>
+
+        <nav className="nav-content">
+          {user ? userOptions : publicOptions}
+        </nav>
+      </div>
+    </header>
   )
 }
 

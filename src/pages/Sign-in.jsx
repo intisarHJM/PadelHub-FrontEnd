@@ -48,20 +48,20 @@ const SignIn = ({ setUser }) => {
             <input
               type="email"
               name="email"
-              placeholder="example@mail.com"
+              placeholder="username@gmail.com"
               id="email"
               onChange={handleChange}
               value={userData.email}
               required
             />
-         
+
 
 
             <label htmlFor="password">Password</label>
             <input
               type="password"
               name="password"
-              placeholder="••••••••"
+              placeholder="******"
               id="password"
               onChange={handleChange}
               value={userData.password}
@@ -76,7 +76,9 @@ const SignIn = ({ setUser }) => {
         <button
           type="submit"
           className="signin-button"
+      
           disabled={!userData.email || !userData.password}
+
         >
           Sign in
         </button>

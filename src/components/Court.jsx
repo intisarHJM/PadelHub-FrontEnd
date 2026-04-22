@@ -13,7 +13,7 @@ const Court = ({ court }) => {
         <p>Price: {court.price} BHD</p> */}
 
         <Link to={`/courts/${court._id}`}>
-          <button>View Details</button>
+          <button id="details-btn">View Details</button>
         </Link>
       </div>
     </div>
