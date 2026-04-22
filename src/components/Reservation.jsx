@@ -9,18 +9,24 @@ const Reservation = () => {
     const getUserReservation = async () => {
       try {
         const token = localStorage.getItem("token")
+        const id = localStorage.getItem("userID")
 
         if (!token) {
           console.error("No token found")
           setLoading(false)
           return
         }
+        console.log(token)
+        console.log(id)
 
-        const res = await axios.get(`http://localhost:3001/reservations`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        const res = await axios.get(
+          `http://localhost:3001/user/reservation/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
 
         setReservations(Array.isArray(res.data) ? res.data : [res.data])
         setLoading(false)
