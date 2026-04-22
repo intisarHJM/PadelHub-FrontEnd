@@ -25,16 +25,16 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* القسم العلوي المضيء */}
+
       <header className="home-hero">
         <Nav />
         <div className="hero-content">
-      
+
           <p>Available Padel Courts</p>
         </div>
       </header>
 
-      {/* قسم الملاعب */}
+      
       <main className="courts-section">
         <div className="section-title">
           <h2>Reserve a court below</h2>

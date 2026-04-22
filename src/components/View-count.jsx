@@ -24,29 +24,34 @@ const ViewCount = () => {
     fetchCourt()
   }, [id])
 
-  // importance for use at milisecond to work at website
-  if (!court) return <div>Loading Court Details...</div>
+  if (!court) return <div className="status-msg">Loading Court Details_</div>
 
   return (
-    <>
-      <div>
-        <Nav />
-        <div>
-          <img src={court.court_img} alt={court.court_id} />
-          <h1>{court.court_id}</h1>
-          <p>Type: {court.courtType}</p>
-          <p>Court Price : {court.price} BHD</p>
+    <div className="page-layout">
+      <Nav />
+
+      <div className="court-view-container">
+        <div className="court-main-card">
+          <div className="court-hero-image">
+            <img src={court.court_img} alt={court.court_id} />
+            <div className="price-overlay">{court.price} BD_</div>
+          </div>
+
+          <div className="court-header-info">
+            <h1 className="form-title">Court_ {court.court_id}</h1>
+            <p className="court-type-tag">Type_ <span>{court.courtType}</span></p>
+          </div>
+
+          <div className="reservation-section-wrapper">
+            <ReservationForm courtId={court._id} price={court.price} />
+          </div>
         </div>
 
-        <hr />
-
-        <ReservationForm courtId={court._id} price={court.price} />
-
-        <hr />
-
-        <Review court={court} setCourt={setCourt} />
+        <div className="reviews-section-wrapper">
+          <Review court={court} setCourt={setCourt} />
+        </div>
       </div>
-    </>
+    </div>
   )
 }
 

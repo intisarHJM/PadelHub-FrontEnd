@@ -39,7 +39,6 @@ const SignUp = () => {
       <form className="signup-form" onSubmit={handleSubmit}>
         <h1 id="signUp-title">Create Account</h1>
 
-        {/* المربع الواحد الموحد لجميع الحقول */}
         <div className="form-card">
           <div className="input-field">
             <label htmlFor="username">Username</label>
