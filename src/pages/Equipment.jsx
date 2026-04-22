@@ -17,15 +17,14 @@ const Equipment = () => {
     const updatedEquipment = { ...equipment, [name]: value }
     setEquipment(updatedEquipment)
 
-    let unitPrice = 0
-    const tool = name === "toolName" ? value : equipment.toolName
-    const qty = name === "quantity" ? Number(value) : Number(equipment.quantity)
-
-    if (tool === "first-tool") unitPrice = 2
-    else if (tool === "second-tool") unitPrice = 4
-    else if (tool === "third-tool") unitPrice = 6
-
-    setPrice(unitPrice * qty)
+    if (event.target.value === "Padel-gear") {
+      setPrice(Number(equipment.quantity) * 2)
+      console.log(price)
+    } else if (event.target.value === "Balls") {
+      setPrice(Number(equipment.quantity) * 4)
+    } else if (event.target.value === "Sport-T-shirt") {
+      setPrice(Number(equipment.quantity) * 6)
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -73,6 +72,15 @@ const Equipment = () => {
             <option value="third-tool">Sport T-shirt</option>
           </select>
         </div>
+        <label htmlFor="toolName" onChange={handleChange}>
+          Tool
+        </label>
+        <select name="toolName" onChange={handleChange} id="toolName">
+          {/* <option value="" disabled default></option> */}
+          <option value="Padel-gear">Padel Gear</option>
+          <option value="Balls">Balls</option>
+          <option value="Sport-T-shirt">Sport T-shirt</option>
+        </select>
 
         <div className="input-field">
           <label>Quantity_</label>
