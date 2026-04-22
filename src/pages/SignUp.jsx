@@ -30,6 +30,7 @@ const SignUp = () => {
       )
       console.log("Success:", res.data)
       setUserData(initialState)
+      
     } catch (err) {
       console.error("Error signing up:", err)
     }

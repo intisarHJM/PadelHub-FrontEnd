@@ -29,7 +29,7 @@ const SignIn = ({ setUser, user }) => {
       )
 
       localStorage.setItem("token", res.data.token)
-      localStorage.setItem("userID", res.data.user.id)
+       localStorage.setItem("userID", res.data.user.id)
 
       setUser(res.data.user)
       console.log("res: ", res)
