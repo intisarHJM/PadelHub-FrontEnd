@@ -1,0 +1,17 @@
+/* equipments style */
+.equipments-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px;
+}
+.equipments-images img {
+  width: 200px;
+  height: 200px;
+}
+
+.equipments-images #racket {
+  width: 150px;
+  height: 200px;
+}

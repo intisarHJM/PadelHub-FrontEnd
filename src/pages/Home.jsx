@@ -27,10 +27,10 @@ const Home = () => {
 
   return (
     <>
-      <div>
+      <div className="home-header">
         <Nav />
         <h1>home </h1>
-       
+
       </div>
 
       <div>
