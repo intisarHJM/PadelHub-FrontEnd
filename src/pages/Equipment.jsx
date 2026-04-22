@@ -24,12 +24,12 @@ const Equipment = () => {
   const handleChange = (event) => {
     setEquipment({ ...equipment, [event.target.name]: event.target.value })
 
-    if (event.target.value === "first-tool") {
+    if (event.target.value === "Padel-gear") {
       setPrice(Number(equipment.quantity) * 2)
       console.log(price)
-    } else if (event.target.value === "second-tool") {
+    } else if (event.target.value === "Balls") {
       setPrice(Number(equipment.quantity) * 4)
-    } else if (event.target.value === "third-tool") {
+    } else if (event.target.value === "Sport-T-shirt") {
       setPrice(Number(equipment.quantity) * 6)
     }
   }
@@ -88,9 +88,9 @@ const Equipment = () => {
         </label>
         <select name="toolName" onChange={handleChange} id="toolName">
           {/* <option value="" disabled default></option> */}
-          <option value="first-tool">Padel Gear</option>
-          <option value="second-tool">Balls</option>
-          <option value="third-tool">Sport T-shirt</option>
+          <option value="Padel-gear">Padel Gear</option>
+          <option value="Balls">Balls</option>
+          <option value="Sport-T-shirt">Sport T-shirt</option>
         </select>
 
         <label htmlFor="quantity">Quantity</label>
