@@ -1,38 +1,56 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState } from "react"
+import axios from "axios"
+import { useNavigate, Link } from "react-router-dom"
+// Added Divider import
+import { Password } from "primereact/password"
+import { Divider } from "primereact/divider"
 
 const SignUp = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const initialState = {
     username: "",
     password: "",
     phoneNum: "",
     email: "",
-  };
-  const [userData, setUserData] = useState(initialState);
+  }
+  const [userData, setUserData] = useState(initialState)
 
   const handleChange = (event) => {
     setUserData({
       ...userData,
       [event.target.name]: event.target.value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const res = await axios.post(
         "http://localhost:3001/auth/sign-up",
         userData
-      );
-      console.log("Success:", res.data);
-      setUserData(initialState);
-      navigate('/Sign-in');
+      )
+      console.log("Success:", res.data)
+      setUserData(initialState)
+      navigate("/Sign-in")
     } catch (err) {
-      console.error("Error signing up:", err);
+      console.error("Error signing up:", err)
     }
-  };
+  }
+
+  // --- PrimeReact Templates ---
+  const header = <div className="font-bold mb-3">Pick a password</div>
+  const footer = (
+    <>
+      <Divider />
+      <p className="mt-2">Suggestions</p>
+      <ul className="pl-2 ml-2 mt-0 line-height-3">
+        <li>At least one lowercase</li>
+        <li>At least one uppercase</li>
+        <li>At least one numeric</li>
+        <li>Minimum 8 characters</li>
+      </ul>
+    </>
+  )
 
   return (
     <div className="signup-container">
@@ -78,12 +96,19 @@ const SignUp = () => {
 
           <div className="input-field">
             <label htmlFor="password">Password</label>
-            <input
-              type="password"
+            
+            {/*PrimeReact Password strength checker */}
+
+            <Password
               name="password"
-              placeholder="*******"
-              onChange={handleChange}
               value={userData.password}
+              onChange={handleChange}
+              header={header}
+              footer={footer}
+              toggleMask
+              placeholder="*******"
+              className="w-full"
+              inputClassName="w-full"
               required
             />
           </div>
@@ -98,7 +123,7 @@ const SignUp = () => {
         </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
 export default SignUp
