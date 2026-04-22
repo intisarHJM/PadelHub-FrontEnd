@@ -6,7 +6,8 @@ const About = () => {
       <Nav />
       <h1>About Page</h1>
       <p>
-        <img className="about-img" src="src\assets\Padel.jpg" alt="about-img" />
+        <img className="about-img" src="src\assets\Padel-about.jpg" alt="about-img" />
+         <img className="about-img2" src="src\assets\Padel-about2.jpg" alt="about-img2" />
         <br />
         Padel Club Raed provides professional courts (indoor and outdoor) with
         the highest specifications. We make it easy for you to book, choose
