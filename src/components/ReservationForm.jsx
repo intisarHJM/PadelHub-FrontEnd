@@ -12,7 +12,7 @@ const ReservationForm = ({ courtId }) => {
     date: new Date(),
     timeSlot: "8:00 PM - 10:00 PM", // أضفنا الوقت للحالة الابتدائية
     totalPrice: 30,
-    court: courtId
+    court: courtId,
   }
 
   const [formState, setFormState] = useState(initialState)
@@ -28,14 +28,19 @@ const ReservationForm = ({ courtId }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const token = localStorage.getItem("token")
+    const id = localStorage.getItem("userID")
 
     try {
       // تصحيح: قمنا بتعريف المتغير response هنا ليتم استخدامه في الـ navigate
-      const response = await axios.post(`http://localhost:3001/reservations/create`, formState, {
-        headers: {
-          Authorization: `Bearer ${token}`
+      const response = await axios.post(
+        `http://localhost:3001/reservations/${id}`,
+        formState,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      })
+      )
 
       setFormState(initialState)
       // الآن سيتم إرسال البيانات بنجاح لصفحة التأكيد
@@ -49,13 +54,13 @@ const ReservationForm = ({ courtId }) => {
     <div>
       <h1>Reservation Form</h1>
       <form onSubmit={handleSubmit}>
-        <input
+        {/* <input
           type="text"
           name="name"
           placeholder="Name"
           onChange={handleChange}
           value={formState.name}
-        />
+        /> */}
         <input
           type="text"
           name="phoneNumber"

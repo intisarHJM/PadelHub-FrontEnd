@@ -45,7 +45,6 @@ const App = () => {
               <Route path="/courts/:id" element={<ViewCount />} />
               <Route path="/equipment" element={<Equipment />} />
               <Route path="/update-password" element={<UpdatePassword />} />
-
             </>
           ) : (
             <Route path="/" element={<Welcome />} />
@@ -59,8 +58,7 @@ const App = () => {
           <Route path="/reservationForm" element={<ReservationForm />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/court-reviews/:id" element={<Review />} />
-          <Route path="/confirmation" element={<Confirmation/>} />
-
+          <Route path="/confirmation" element={<Confirmation />} />
         </Routes>
       </main>
     </>
