@@ -1,6 +1,21 @@
+import { useNavigate } from "react-router-dom"
 import Nav from "./Nav"
+import { useEffect } from "react"
 
 const About = () => {
+  const nav = useNavigate()
+  const token = localStorage.getItem("token")
+
+  useEffect(() => {
+    if (!token) {
+      nav("/sign-in")
+    }
+  }, [])
+
+  if (!token) {
+    return null
+  }
+
   return (
     <div className="page-layout">
       <Nav />
@@ -10,15 +25,23 @@ const About = () => {
 
         <div className="about-content">
           <div className="about-images-grid">
-            <img className="about-card-img" src="src/assets/Padel-about.jpg" alt="Padel Court" />
-            <img className="about-card-img" src="src/assets/Padel-about2.jpg" alt="Padel Players" />
+            <img
+              className="about-card-img"
+              src="src/assets/Padel-about.jpg"
+              alt="Padel Court"
+            />
+            <img
+              className="about-card-img"
+              src="src/assets/Padel-about2.jpg"
+              alt="Padel Players"
+            />
           </div>
 
           <div className="about-text-card">
             <p>
-              Padel Club Raed provides professional courts (indoor and outdoor) with
-              the highest specifications. We make it easy for you to book, choose
-              equipment, and enjoy the best padel facilities in Bahrain_
+              Padel Club Raed provides professional courts (indoor and outdoor)
+              with the highest specifications. We make it easy for you to book,
+              choose equipment, and enjoy the best padel facilities in Bahrain_
             </p>
           </div>
         </div>

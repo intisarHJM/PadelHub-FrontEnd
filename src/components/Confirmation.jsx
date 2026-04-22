@@ -1,17 +1,30 @@
 import { useNavigate, useLocation } from "react-router-dom"
 import Nav from "../pages/Nav"
+import { useEffect } from "react"
 
 const Confirmation = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const res = location.state?.res
+  const token = localStorage.getItem("token")
 
+  useEffect(() => {
+    if (!token) {
+      navigate("/sign-in")
+    }
+  }, [])
+
+  if (!token) {
+    return null
+  }
   if (!res) {
     return (
       <div className="page-layout">
         <Nav />
         <h1 className="form-title">No Reservation Found_</h1>
-        <button className="btn btn-primary" onClick={() => navigate("/")}>Go Home_</button>
+        <button className="btn btn-primary" onClick={() => navigate("/")}>
+          Go Home_
+        </button>
       </div>
     )
   }
@@ -44,7 +57,10 @@ const Confirmation = () => {
         </div>
 
         <div className="button-group">
-          <button className="btn btn-primary" onClick={() => navigate("/reservation")}>
+          <button
+            className="btn btn-primary"
+            onClick={() => navigate("/reservation")}
+          >
             View My Reservations
           </button>
           <button className="btn btn-secondary" onClick={() => navigate("/")}>

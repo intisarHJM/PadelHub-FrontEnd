@@ -1,7 +1,6 @@
 import axios from "axios"
 
 const Delete = ({ url, onDeleteSuccess }) => {
-
   const deleteFunc = async () => {
     try {
       const token = localStorage.getItem("token")

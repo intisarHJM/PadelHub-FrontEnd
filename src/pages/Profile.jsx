@@ -6,11 +6,12 @@ import Nav from "./Nav"
 const Profile = () => {
   const [userData, setUserData] = useState(null)
   const navigate = useNavigate()
+  const token = localStorage.getItem("token")
 
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const token = localStorage.getItem("token")
+        // const token = localStorage.getItem("token")
         if (!token) return
         const res = await axios.get("http://localhost:3001/auth/session", {
           headers: { Authorization: `Bearer ${token}` },
@@ -22,6 +23,16 @@ const Profile = () => {
     }
     getUserData()
   }, [])
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/sign-in")
+    }
+  }, [])
+
+  if (!token) {
+    return null
+  }
 
   return (
     <div className="page-layout">
@@ -43,18 +54,29 @@ const Profile = () => {
           </div>
           <div className="input-field">
             <label>Phone Number_</label>
-            <div className="info-display">{userData?.phoneNum || "Not provided_"}</div>
+            <div className="info-display">
+              {userData?.phoneNum || "Not provided_"}
+            </div>
           </div>
         </div>
 
         <div className="button-group">
-          <button onClick={() => navigate("/reservation")} className="btn btn-secondary">
+          <button
+            onClick={() => navigate("/reservation")}
+            className="btn btn-secondary"
+          >
             My Reservations_
           </button>
-          <button onClick={() => navigate("/purchase-history")} className="btn btn-secondary">
+          <button
+            onClick={() => navigate("/purchase-history")}
+            className="btn btn-secondary"
+          >
             Purchase History_
           </button>
-          <button onClick={() => navigate("/update-password")} className="btn btn-primary">
+          <button
+            onClick={() => navigate("/update-password")}
+            className="btn btn-primary"
+          >
             Update Password_
           </button>
         </div>

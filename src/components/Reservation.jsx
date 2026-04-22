@@ -2,14 +2,17 @@ import React, { useState, useEffect, useCallback } from "react"
 import axios from "axios"
 import Nav from "../pages/Nav"
 import Delete from "./Delete-button"
+import { useNavigate } from "react-router-dom"
 
 const Reservation = () => {
   const [reservations, setReservations] = useState([])
   const [loading, setLoading] = useState(true)
+  const nav = useNavigate()
+  const token = localStorage.getItem("token")
 
   const getUserReservation = useCallback(async () => {
     try {
-      const token = localStorage.getItem("token")
+      // const token = localStorage.getItem("token")
       const id = localStorage.getItem("userID")
       if (!token) {
         setLoading(false)
@@ -19,7 +22,7 @@ const Reservation = () => {
         `http://localhost:3001/user/reservation/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
-      const data = Array.isArray(res.data) ? res.data : [res.data];
+      const data = Array.isArray(res.data) ? res.data : [res.data]
       setReservations(data)
     } catch (error) {
       console.error("Error getting reservation", error)
@@ -31,6 +34,16 @@ const Reservation = () => {
   useEffect(() => {
     getUserReservation()
   }, [getUserReservation])
+
+  useEffect(() => {
+    if (!token) {
+      nav("/sign-in")
+    }
+  }, [])
+
+  if (!token) {
+    return null
+  }
 
   return (
     <div className="page-layout">
@@ -44,14 +57,20 @@ const Reservation = () => {
           [...reservations].reverse().map((res, index) => (
             <div key={res._id || index} className="res-card">
               <div className="res-card-header">
-                <h3>Court_ <span>{res.court?.court_id || "N/A"}</span></h3>
+                <h3>
+                  Court_ <span>{res.court?.court_id || "N/A"}</span>
+                </h3>
                 <span className="price-tag">{res.court?.price} BHD</span>
               </div>
 
               <div className="res-card-body">
                 <div className="res-info">
                   <label>Date_</label>
-                  <p>{res.date ? new Date(res.date).toLocaleDateString() : "Not set"}</p>
+                  <p>
+                    {res.date
+                      ? new Date(res.date).toLocaleDateString()
+                      : "Not set"}
+                  </p>
                 </div>
                 <div className="res-info">
                   <label>Time_</label>
