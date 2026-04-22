@@ -6,9 +6,9 @@ const Nav = ({ user, handleLogOut }) => {
   if (user) {
     userOptions = (
       <div className="nav-user-profile">
-        <span className="welcome-msg">Welcome, <span>{user.name}_</span></span>
+        <span className="welcome-msg">Welcome  <span>{user.name}</span></span>
         <Link onClick={handleLogOut} to="/" className="signout-btn">
-          Sign Out_
+          Sign Out
         </Link>
       </div>
     )
