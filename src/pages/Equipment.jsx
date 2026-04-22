@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import "../App.css"
@@ -10,6 +10,8 @@ const Equipment = () => {
 
   const id = localStorage.getItem("userID")
 
+  // let price = 0
+
   let initialState = {
     // userId: id,
     toolName: "",
@@ -17,9 +19,19 @@ const Equipment = () => {
   }
 
   const [equipment, setEquipment] = useState(initialState)
+  const [price, setPrice] = useState(0)
 
   const handleChange = (event) => {
     setEquipment({ ...equipment, [event.target.name]: event.target.value })
+
+    if (event.target.value === "first-tool") {
+      setPrice(Number(equipment.quantity) * 2)
+      console.log(price)
+    } else if (event.target.value === "second-tool") {
+      setPrice(Number(equipment.quantity) * 4)
+    } else if (event.target.value === "third-tool") {
+      setPrice(Number(equipment.quantity) * 6)
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -75,6 +87,7 @@ const Equipment = () => {
           Tool
         </label>
         <select name="toolName" onChange={handleChange} id="toolName">
+          {/* <option value="" disabled default></option> */}
           <option value="first-tool">Padel Gear</option>
           <option value="second-tool">Balls</option>
           <option value="third-tool">Sport T-shirt</option>
@@ -91,7 +104,9 @@ const Equipment = () => {
         <button type="submit">Submit</button>
       </form>
 
-      <h2>my cart: {equipment.quantity * equipment.price}</h2>
+      <h2>
+        my cart: {/* {equipment.quantity * equipment.price} */} {price}
+      </h2>
     </>
   )
 }
