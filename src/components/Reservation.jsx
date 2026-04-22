@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import Nav from "../pages/Nav"
+import Delete from "./Delete-button"
 
 const Reservation = () => {
   const [reservations, setReservations] = useState([])
@@ -10,18 +11,24 @@ const Reservation = () => {
     const getUserReservation = async () => {
       try {
         const token = localStorage.getItem("token")
+        const id = localStorage.getItem("userID")
 
         if (!token) {
           console.error("No token found")
           setLoading(false)
           return
         }
+        // console.log(token)
+        // console.log(id)
 
-        const res = await axios.get(`http://localhost:3001/reservations`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        const res = await axios.get(
+          `http://localhost:3001/user/reservation/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
 
         setReservations(Array.isArray(res.data) ? res.data : [res.data])
         setLoading(false)
@@ -32,7 +39,7 @@ const Reservation = () => {
     }
 
     getUserReservation()
-  }, [])
+  }, [reservations])
   return (
     <div className="reservation-view">
       <h1>My Reservations</h1>
@@ -53,6 +60,7 @@ const Reservation = () => {
               <p>Time Reservation:{res.timeSlot || "8:00 PM - 10:00 PM"}</p>
               <p>Price: ${res.totalPrice}</p>
               <p>Booked on: {res.createdAt?.split("T")[0]}</p>
+              <Delete url={`http://localhost:3001/reservations/${res._id}`} />
             </div>
           ))
         ) : (

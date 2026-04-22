@@ -12,6 +12,7 @@ const UpdatePassword = ({ user }) => {
   const [password, setPassword] = useState(initialState)
   navigation = useNavigate()
 
+
   const handleChange = (event) => {
     setPassword({
       ...password,

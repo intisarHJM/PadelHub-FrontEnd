@@ -1,3 +1,309 @@
+/* welcome page */
+.welcome-page {
+  background: linear-gradient(
+      rgba(11, 18, 33, 0.6),
+      rgba(11, 18, 33, 0.7)
+    ),
+    url('https://i.pinimg.com/1200x/82/6d/75/826d753bf1c04cb6fa5b0988e52b2991.jpg') no-repeat center center;
+
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.h1-welcome {
+  color: #ccff00;
+  font-size: 6em;
+  font-weight: 600;
+  margin-bottom: 50px;
+
+}
+
+.welcome-page button {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: none;
+  padding: 14px 35px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 50px;
+  margin: 8px;
+  min-width: 160px;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(8px);
+}
+
+.welcome-page button:last-of-type {
+  background-color: #ccff00;
+  color: #0b1221;
+  font-weight: 600;
+  backdrop-filter: none;
+}
+
+/* Sign-in Page */
+
+
+
+/* الحاوية الكبرى - استخدام الخلفية الجديدة بصورة سادة */
+.signin-container {
+  /* الخلفية الجديدة مع طبقة تعتيم خفيفة جداً للحفاظ على الألوان */
+  background: linear-gradient(
+      rgba(11, 18, 33, 0.4),
+      rgba(11, 18, 33, 0.5)
+    ),
+    url('https://i.pinimg.com/736x/23/ea/cf/23eacf1f6f28a52cb0f93d9e91dc7db9.jpg') no-repeat center center;
+
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+
+  overflow: hidden; /* لمنع ظهور شريط التمرير بسبب حركة الكروت */
+}
+
+/* العنوان - أنيق وبسيط */
+#signIn-title {
+  color: #ccff00; /* لون البادل المعتمد */
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  letter-spacing: -1px;
+  text-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+}
+
+/* حاوية الفورم - شفافة بالكامل لترتيب الكروت */
+.signin-form {
+  background: transparent;
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* تنسيق مجموعة الإدخال ككرت منفصل */
+.input-group {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+ /* التنسيق العام للمربعات الجديدة */
+.input-box {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(15px);
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+/* المربع الأول (الإيميل مثلاً) - أصغر ومزاح لليسار */
+.input-box:first-of-type {
+  width: 90%;
+  align-self: flex-start; /* يروح لليسار */
+  transform: translateX(-5px);
+}
+
+/* المربع الثاني (الباسورد مثلاً) - أكبر ومزاح لليمين */
+.input-box:nth-of-type(2) {
+  width: 100%; /* مقاس مختلف */
+  padding: 25px; /* مساحة أكبر شوي */
+  align-self: flex-end; /* يروح لليمين */
+  transform: translateX(15px);
+  background: rgba(255, 255, 255, 0.05); /* درجة شفافية مختلفة للتمويه */
+}
+
+/* تنسيق النصوص داخل الـ input-box لضمان التناسق */
+.input-box label {
+  color: #ccff00;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.input-box input {
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.input-box input:focus {
+  border-bottom-color: #ccff00;
+}
+  padding: 20px;
+  border-radius: 20px;
+  width: 100%;
+  margin-bottom: 15px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* التنسيق العام للمربعات الجديدة */
+.input-box {
+
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+/* المربع الأول (الإيميل مثلاً) - أصغر ومزاح لليسار */
+.input-box:first-of-type {
+  width: 90%;
+  align-self: flex-start; /* يروح لليسار */
+  transform: translateX(-5px);
+}
+
+/* المربع الثاني (الباسورد مثلاً) - أكبر ومزاح لليمين */
+.input-box:nth-of-type(2) {
+  width: 100%; /* مقاس مختلف */
+  padding: 25px; /* مساحة أكبر شوي */
+  align-self: flex-end; /* يروح لليمين */
+  transform: translateX(15px);
+  background: rgba(255, 255, 255, 0.05); /* درجة شفافية مختلفة للتمويه */
+}
+
+/* تنسيق النصوص داخل الـ input-box لضمان التناسق */
+.input-box label {
+  color: #ccff00;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.input-box input {
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  outline: none;
+
+}
+
+.input-box input:focus {
+  border-bottom-color: #ccff00;
+}
+/* -- تأثير التدرج وعدم الانتظام (Key Feature) -- */
+
+/* الكرت الأول (الإيميل) - مزاح قليلاً لليسار ومكبر */
+.input-group:first-of-type {
+  transform: translateX(-15px) scale(1.02);
+  width: 100%;
+}
+
+/* الكرت الثاني (الباسورد) - مزاح لليمين */
+.input-group:nth-of-type(2) {
+  transform: translateX(15px);
+  width: 100%;
+}
+
+/* تأثير الـ Hover على الكروت */
+.input-group:hover {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* تنسيق الليبل داخل الكرت */
+.input-group label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* تنسيق حقل الإدخال */
+.input-group input {
+  background: transparent;
+  border: none;
+
+  padding: 10px 0;
+  color: white;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-bottom-color: #ccff00; /* يتحول للون الفسفوري عند الكتابة */
+}
+
+input#email,input#password{
+margin-left: 20px;
+
+}
+
+/* تنسيق الرابط - تكبيره وتوضيحه */
+.signup-link {
+  color: #ccff00; /* جعل اللون فسفوري مباشرة ليبرز */
+  text-decoration: none;
+  font-size: 1.1rem; /* تكبير الخط كما طلبت */
+  font-weight: 600;
+  margin: 25px 0;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.signup-link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* تنسيق الزر - Pill Shape ناعم */
+.signin-button {
+  background-color: #ccff00;
+  color: #0b1221;
+  border: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+
+  width: 100%;
+  max-width: 250px;
+}
+
+.signin-button:hover:not(:disabled) {
+  background-color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.signin-button:disabled {
+  background-color: rgba(204, 255, 0, 0.2);
+  color: rgba(11, 18, 33, 0.5);
+  cursor: not-allowed;
+}
+
+
+
+
 /* equipments style */
 .equipments-images {
   display: flex;
@@ -15,3 +321,4 @@
   width: 150px;
   height: 200px;
 }
+
