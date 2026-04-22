@@ -12,6 +12,7 @@ const UpdatePassword = ({ user }) => {
   const [password, setPassword] = useState(initialState)
   navigation = useNavigate()
 
+  const id = localStorage.getItem("userID")
 
   const handleChange = (event) => {
     setPassword({
@@ -33,7 +34,7 @@ const UpdatePassword = ({ user }) => {
       const { oldPassword, newPassword } = password
 
       const response = await axios.put(
-        `http://localhost:3001/auth/update-password/${user.id}`,
+        `http://localhost:3001/auth/update-password/${id}`,
         { oldPassword, newPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -55,14 +56,16 @@ const UpdatePassword = ({ user }) => {
           name="oldPassword"
           id="oldPass"
           onChange={handleChange}
+          value={password.oldPassword}
         />
 
         <label htmlFor="newPass"> New password </label>
         <input
           type="password"
           id="newPass"
-          name="newPassword "
+          name="newPassword"
           onChange={handleChange}
+          value={password.newPassword}
         />
         {/*
         <label htmlFor="confirmPass"> Confirm password </label>
