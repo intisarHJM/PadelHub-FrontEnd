@@ -18,6 +18,7 @@ import UpdatePassword from "./components/Update-Password"
 import Confirmation from "./components/Confirmation"
 import PurchaseHistory from "./components/PurchaseHistory"
 
+
 const App = () => {
   const initialState = {
     email: "",
@@ -57,6 +58,7 @@ const App = () => {
                 path="/update-password"
                 element={<UpdatePassword user={user} />}
               />
+             
             </>
           ) : (
             <Route path="/" element={<Welcome />} />

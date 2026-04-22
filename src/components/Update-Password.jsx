@@ -13,6 +13,8 @@ const UpdatePassword = () => {
   const navigate = useNavigate()
   const id = localStorage.getItem("userID")
 
+  
+
   const handleChange = (event) => {
     setPassword({
       ...password,
@@ -43,16 +45,16 @@ const UpdatePassword = () => {
   return (
     <div className="page-layout">
       <Nav />
-      <h1 className="form-title">Update Password_</h1>
+      <h1 className="form-title">Update Password</h1>
 
       <form className="form-card" onSubmit={handleSubmit}>
         <div className="input-field">
-          <label htmlFor="oldPass">Old Password_</label>
+          <label htmlFor="oldPass">Old Password</label>
           <input
             type="password"
             name="oldPassword"
             id="oldPass"
-            placeholder="Enter old password_"
+            placeholder="Enter old password"
             onChange={handleChange}
             value={password.oldPassword}
             required
@@ -60,12 +62,12 @@ const UpdatePassword = () => {
         </div>
 
         <div className="input-field">
-          <label htmlFor="newPass">New Password_</label>
+          <label htmlFor="newPass">New Password</label>
           <input
             type="password"
             id="newPass"
             name="newPassword"
-            placeholder="Enter new password_"
+            placeholder="Enter new password"
             onChange={handleChange}
             value={password.newPassword}
             required
@@ -73,7 +75,7 @@ const UpdatePassword = () => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Update Now_
+          Update Now
         </button>
       </form>
     </div>
