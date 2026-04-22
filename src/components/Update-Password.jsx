@@ -13,6 +13,8 @@ const UpdatePassword = () => {
   const navigate = useNavigate()
   const id = localStorage.getItem("userID")
 
+  
+
   const handleChange = (event) => {
     setPassword({
       ...password,

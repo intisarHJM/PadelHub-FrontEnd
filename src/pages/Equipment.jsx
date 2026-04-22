@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import Nav from "./Nav"
+import { useNavigate } from "react-router-dom"
 
 const Equipment = () => {
   const id = localStorage.getItem("userID")
@@ -11,6 +12,19 @@ const Equipment = () => {
     Balls: 0,
     "Sport T-shirt": 0,
   })
+
+  const nav = useNavigate()
+  const token = localStorage.getItem("token")
+
+  useEffect(() => {
+    if (!token) {
+      nav("/sign-in")
+    }
+  }, [])
+
+  if (!token) {
+    return null
+  }
 
   const initialState = {
     toolName: "first-tool",
@@ -44,8 +58,6 @@ const Equipment = () => {
     } else {
       unitPrice = 0
     }
-
-    // setPrice(Number(updatedEquipment.quantity) * unitPrice)
   }
 
   const handleSubmit = async (e) => {
@@ -72,7 +84,6 @@ const Equipment = () => {
     let equipmentName = ""
     let unitPrice = 0
 
-    // Identify the item and its price
     if (equipment.toolName === "first-tool") {
       equipmentName = "Padel Gear"
       unitPrice = 2
@@ -84,19 +95,16 @@ const Equipment = () => {
       unitPrice = 6
     }
 
-    // Calculate cost of what is being added NOW
     const addedCost = Number(equipment.quantity) * unitPrice
 
-    // Update the quantities summary
     setTotals({
       ...totals,
       [equipmentName]: totals[equipmentName] + Number(equipment.quantity),
     })
 
-    // ADD the new cost to the existing price (Accumulate)
+    // add the new price to the existing price
     setPrice(price + addedCost)
 
-    // Reset the selection area so user can pick something else
     setEquipment({ toolName: "first-tool", quantity: 1 })
   }
 
@@ -228,28 +236,26 @@ const Equipment = () => {
         </p>
         <br />
 
-
-
-
         <div className="basket-btns">
-        <button
-          className="btn btn-primary"
-          type="button"
-          onClick={() => {
-            setTotals({ "Padel Gear": 0, Balls: 0, "Sport T-shirt": 0 })
-            setEquipment({ toolName: "first-tool", quantity: 1 })
-            setPrice(0)
-          }}
-        >
-          Reset Card
-        </button>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={handleSubmit}
-        >
-          Purchase Now
-        </button></div>
+          <button
+            className="btn btn-primary"
+            type="button"
+            onClick={() => {
+              setTotals({ "Padel Gear": 0, Balls: 0, "Sport T-shirt": 0 })
+              setEquipment({ toolName: "first-tool", quantity: 1 })
+              setPrice(0)
+            }}
+          >
+            Reset Card
+          </button>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={handleSubmit}
+          >
+            Purchase Now
+          </button>
+        </div>
       </div>
     </div>
   )
