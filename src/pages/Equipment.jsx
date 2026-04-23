@@ -37,7 +37,6 @@ const Equipment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      // const token = localStorage.getItem("token")
       if (!token) return
       await axios.post(
         `http://localhost:3001/equipments/buy/${id}`,
@@ -46,7 +45,7 @@ const Equipment = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      alert("Order Placed Successfully_")
+      alert("Your Order Successfully placed ")
     } catch (error) {
       console.error("Error: " + error)
     }
@@ -100,14 +99,7 @@ const Equipment = () => {
       <form className="form-card" onSubmit={handleSubmit}>
         <h3 className="sub-title">Place Your Order</h3>
 
-        <div className="input-field">
-          {/* <label>Select Tool_</label>
-          <select name="toolName" onChange={handleChange} value={equipment.toolName}>
-            <option value="first-tool">Padel Gear</option>
-            <option value="second-tool">Balls</option>
-            <option value="third-tool">Sport T-shirt</option>
-          </select> */}
-        </div>
+        <div className="input-field"></div>
         <label htmlFor="toolName" onChange={handleChange}>
           Tool
         </label>

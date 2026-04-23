@@ -12,7 +12,6 @@ const Reservation = () => {
 
   const getUserReservation = useCallback(async () => {
     try {
-      // const token = localStorage.getItem("token")
       const id = localStorage.getItem("userID")
       if (!token) {
         setLoading(false)

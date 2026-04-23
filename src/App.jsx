@@ -32,14 +32,6 @@ const App = () => {
     })
   }
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token")
-  //   if (token) {
-  //     console.log(atob(token))
-  //     // setUser(JSON.parse(atob(token).split("."[1])).payload)
-  //   }
-  // }, [])
-
   return (
     <>
       <main>
