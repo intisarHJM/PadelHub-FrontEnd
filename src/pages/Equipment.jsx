@@ -46,7 +46,7 @@ const Equipment = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      alert("Order Placed Successfully_")
+      alert("Thanks for your purchase . your Order Successfully placed ✅")
     } catch (error) {
       console.error("Error: " + error)
     }

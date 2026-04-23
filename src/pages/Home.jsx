@@ -39,9 +39,7 @@ const Home = () => {
     <div className="home-container">
       <header className="home-hero">
         <Nav />
-        <div className="hero-content">
-          <p>Available Padel Courts</p>
-        </div>
+
       </header>
 
       <main className="courts-section">

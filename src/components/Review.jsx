@@ -56,7 +56,7 @@ const Review = () => {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Write your experience here . . . "
+            placeholder="Write your description here  "
           />
         </div>
 

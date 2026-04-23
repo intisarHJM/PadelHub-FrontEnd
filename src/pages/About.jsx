@@ -21,7 +21,7 @@ const About = () => {
       <Nav />
 
       <div className="about-container">
-        <h1 className="form-title">About Us</h1>
+        <h1 className="form-title">About </h1>
 
         <div className="about-content">
           <div className="about-images-grid">
