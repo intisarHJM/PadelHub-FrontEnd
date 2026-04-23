@@ -20,7 +20,7 @@ const Delete = ({ url, onDeleteSuccess }) => {
 
   return (
     <button className="delete-btn-action" onClick={() => deleteFunc()}>
-      Delete_
+      Delete
     </button>
   )
 }

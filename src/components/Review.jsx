@@ -49,19 +49,19 @@ const Review = () => {
   return (
     <div className="reviews-container">
       <form className="review-form" onSubmit={handleSubmit}>
-        <h3 className="sub-title">Add Review_</h3>
+        <h3 className="sub-title">Add Review</h3>
 
         <div className="input-field">
-          <label>Description_</label>
+          <label>Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Write your experience here_"
+            placeholder="Write your experience here . . . "
           />
         </div>
 
         <div className="input-field">
-          <label>Rating_</label>
+          <label>Rating</label>
           <select value={rating} onChange={(e) => setRating(e.target.value)}>
             <option value="5">⭐⭐⭐⭐⭐ </option>
             <option value="4">⭐⭐⭐⭐ </option>
@@ -72,7 +72,7 @@ const Review = () => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Send Review_
+          Send Review
         </button>
       </form>
 
@@ -94,7 +94,7 @@ const Review = () => {
             </div>
           ))
         ) : (
-          <p className="status-msg">No reviews yet_</p>
+          <p className="status-msg">No reviews yet</p>
         )}
       </div>
     </div>

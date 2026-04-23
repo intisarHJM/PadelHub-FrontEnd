@@ -15,13 +15,11 @@ const Equipment = () => {
   const [equipment, setEquipment] = useState(initialState)
   const [price, setPrice] = useState(2)
 
-  // 1. Simplify handleChange to only update the state
   const handleChange = (event) => {
     const { name, value } = event.target
     setEquipment({ ...equipment, [name]: value })
   }
 
-  // 2. Add useEffect to "watch" equipment and update price automatically
   useEffect(() => {
     const calculatePrice = () => {
       let unitPrice = 0
@@ -67,7 +65,7 @@ const Equipment = () => {
   return (
     <div className="page-layout">
       <Nav />
-      <h1 className="form-title">Shop Equipment_</h1>
+      <h1 className="form-title">Shop Equipment</h1>
 
       <div className="equipment-grid">
         <div className="item-card">
@@ -76,7 +74,7 @@ const Equipment = () => {
             alt="Padel Gear"
           />
           <p>
-            Padel Gear_ <span>2 BHD</span>
+            Padel Gear <span>2 BHD</span>
           </p>
         </div>
         <div className="item-card">
@@ -85,7 +83,7 @@ const Equipment = () => {
             alt="Balls"
           />
           <p>
-            Balls_ <span>4 BHD</span>
+            Balls <span>4 BHD</span>
           </p>
         </div>
         <div className="item-card">
@@ -94,13 +92,13 @@ const Equipment = () => {
             alt="T-shirt"
           />
           <p>
-            T-shirt_ <span>6 BHD</span>
+            T-shirt <span>6 BHD</span>
           </p>
         </div>
       </div>
 
       <form className="form-card" onSubmit={handleSubmit}>
-        <h3 className="sub-title">Place Your Order_</h3>
+        <h3 className="sub-title">Place Your Order</h3>
 
         <div className="input-field">
           {/* <label>Select Tool_</label>
@@ -121,7 +119,7 @@ const Equipment = () => {
         </select>
 
         <div className="input-field">
-          <label>Quantity_</label>
+          <label>Quantity</label>
           <input
             type="number"
             name="quantity"
@@ -133,10 +131,10 @@ const Equipment = () => {
 
         <div className="total-section">
           <p>
-            Total Price_ <span>{price} BHD</span>
+            Total Price <span>{price} BHD</span>
           </p>
           <button type="submit" className="btn btn-primary">
-            Purchase Now_
+            Purchase Now
           </button>
         </div>
       </form>

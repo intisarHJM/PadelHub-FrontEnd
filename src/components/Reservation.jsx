@@ -48,24 +48,24 @@ const Reservation = () => {
   return (
     <div className="page-layout">
       <Nav />
-      <h1 className="form-title">My Reservations_</h1>
+      <h1 className="form-title">My Reservations</h1>
 
       <div className="reservation-grid">
         {loading ? (
-          <div className="status-msg">Loading_</div>
+          <div className="status-msg">Loading</div>
         ) : reservations && reservations.length > 0 ? (
           [...reservations].reverse().map((res, index) => (
             <div key={res._id || index} className="res-card">
               <div className="res-card-header">
                 <h3>
-                  Court_ <span>{res.court?.court_id || "N/A"}</span>
+                  Court <span>{res.court?.court_id || "N/A"}</span>
                 </h3>
                 <span className="price-tag">{res.court?.price} BHD</span>
               </div>
 
               <div className="res-card-body">
                 <div className="res-info">
-                  <label>Date_</label>
+                  <label>Date</label>
                   <p>
                     {res.date
                       ? new Date(res.date).toLocaleDateString()
@@ -73,11 +73,11 @@ const Reservation = () => {
                   </p>
                 </div>
                 <div className="res-info">
-                  <label>Time_</label>
+                  <label>Time</label>
                   <p>{res.timeSlot || "8:00 PM - 10:00 PM"}</p>
                 </div>
                 <div className="res-info">
-                  <label>Phone_</label>
+                  <label>Phone</label>
                   <p>{res.phoneNumber}</p>
                 </div>
               </div>
@@ -91,7 +91,7 @@ const Reservation = () => {
             </div>
           ))
         ) : (
-          <div className="status-msg">No reservations found_</div>
+          <div className="status-msg">No reservations found</div>
         )}
       </div>
     </div>

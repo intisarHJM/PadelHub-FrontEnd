@@ -37,25 +37,25 @@ const Profile = () => {
   return (
     <div className="page-layout">
       <Nav />
-      <h1 className="form-title">My Profile_</h1>
+      <h1 className="form-title">My Profile</h1>
 
       <div className="form-card profile-card-wide">
         <div className="profile-header">
           <div className="profile-avatar">
             {userData?.username?.charAt(0).toUpperCase()}
           </div>
-          <h2 className="sub-title">{userData?.username}_</h2>
+          <h2 className="sub-title">{userData?.username}</h2>
         </div>
 
         <div className="profile-info-grid">
           <div className="input-field">
-            <label>Email Address_</label>
+            <label>Email Address</label>
             <div className="info-display">{userData?.email}</div>
           </div>
           <div className="input-field">
-            <label>Phone Number_</label>
+            <label>Phone Number</label>
             <div className="info-display">
-              {userData?.phoneNum || "Not provided_"}
+              {userData?.phoneNum || "Not provided"}
             </div>
           </div>
         </div>
@@ -65,19 +65,19 @@ const Profile = () => {
             onClick={() => navigate("/reservation")}
             className="btn btn-secondary"
           >
-            My Reservations_
+            My Reservations
           </button>
           <button
             onClick={() => navigate("/purchase-history")}
             className="btn btn-secondary"
           >
-            Purchase History_
+            Purchase History
           </button>
           <button
             onClick={() => navigate("/update-password")}
             className="btn btn-primary"
           >
-            Update Password_
+            Update Password
           </button>
         </div>
       </div>

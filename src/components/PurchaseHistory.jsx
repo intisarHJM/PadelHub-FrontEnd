@@ -45,16 +45,16 @@ const PurchaseHistory = () => {
   return (
     <div className="page-layout">
       <Nav />
-      <h1 className="form-title">Purchase History_</h1>
+      <h1 className="form-title">Purchase History</h1>
 
       <div className="history-list-container">
         {items.length > 0 ? (
           [...items].reverse().map((item) => (
             <div key={item._id} className="history-card-item">
               <div className="history-main-info">
-                <h3>{item.toolName}_</h3>
+                <h3>{item.toolName}</h3>
                 <p>
-                  Purchased on_ <span>{item.createdAt.split("T")[0]}</span>
+                  Purchased on: <span>{item.createdAt.split("T")[0]}</span>
                 </p>
               </div>
               <div className="history-status">
@@ -63,7 +63,7 @@ const PurchaseHistory = () => {
             </div>
           ))
         ) : (
-          <div className="status-msg">No purchase history found_</div>
+          <div className="status-msg">No purchase history found</div>
         )}
       </div>
     </div>
