@@ -1,17 +1,21 @@
 import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 import Nav from "../pages/Nav"
 
-const UpdatePassword = () => {
+const UpdatePassword = ({ user }) => {
   const initialState = {
     oldPassword: "",
     newPassword: "",
+    confirmPassword: "",
   }
 
   const [password, setPassword] = useState(initialState)
-  const navigate = useNavigate()
+  const navigation = useNavigate()
+
   const id = localStorage.getItem("userID")
+  const token = localStorage.getItem("token")
 
   const handleChange = (event) => {
     setPassword({
@@ -22,37 +26,52 @@ const UpdatePassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const token = localStorage.getItem("token")
-      const { oldPassword, newPassword } = password
 
-      await axios.put(
-        `http://localhost:3001/auth/update-password/${id}`,
-        { oldPassword, newPassword },
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
+    if (password.newPassword === password.confirmPassword) {
+      try {
+        // const token = localStorage.getItem("token")
 
-      setPassword(initialState)
-      alert("Password successfully updated_")
-      navigate("/profile")
-    } catch (error) {
-      console.log("Error: " + error)
+        const { oldPassword, newPassword } = password
+
+        const response = await axios.put(
+          `http://localhost:3001/auth/update-password/${id}`,
+          { oldPassword, newPassword },
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+
+        setPassword(initialState)
+        alert("password successfully updated")
+      } catch (error) {
+        console.log("Error: " + error)
+      }
+    } else {
+      return alert("New passwords do not match!")
     }
+  }
+
+  useEffect(() => {
+    if (!token) {
+      navigation("/sign-in")
+    }
+  }, [])
+
+  if (!token) {
+    return null
   }
 
   return (
     <div className="page-layout">
       <Nav />
-      <h1 className="form-title">Update Password_</h1>
+      <h1 className="form-title">Update Password</h1>
 
       <form className="form-card" onSubmit={handleSubmit}>
         <div className="input-field">
-          <label htmlFor="oldPass">Old Password_</label>
+          <label htmlFor="oldPass">Old Password</label>
           <input
             type="password"
             name="oldPassword"
             id="oldPass"
-            placeholder="Enter old password_"
+            placeholder="Enter old password"
             onChange={handleChange}
             value={password.oldPassword}
             required
@@ -60,12 +79,12 @@ const UpdatePassword = () => {
         </div>
 
         <div className="input-field">
-          <label htmlFor="newPass">New Password_</label>
+          <label htmlFor="newPass">New Password</label>
           <input
             type="password"
             id="newPass"
             name="newPassword"
-            placeholder="Enter new password_"
+            placeholder="Enter new password"
             onChange={handleChange}
             value={password.newPassword}
             required
@@ -73,7 +92,7 @@ const UpdatePassword = () => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Update Now_
+          Update Now
         </button>
       </form>
     </div>

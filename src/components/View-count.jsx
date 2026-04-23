@@ -24,7 +24,7 @@ const ViewCount = () => {
     fetchCourt()
   }, [id])
 
-  if (!court) return <div className="status-msg">Loading Court Details_</div>
+  if (!court) return <div className="status-msg">Loading Court Details</div>
 
   return (
     <div className="page-layout">
@@ -34,12 +34,14 @@ const ViewCount = () => {
         <div className="court-main-card">
           <div className="court-hero-image">
             <img src={court.court_img} alt={court.court_id} />
-            <div className="price-overlay">{court.price} BD_</div>
+            <div className="price-overlay">{court.price} BD</div>
           </div>
 
           <div className="court-header-info">
-            <h1 className="form-title">Court_ {court.court_id}</h1>
-            <p className="court-type-tag">Type_ <span>{court.courtType}</span></p>
+            <h1 className="form-title">Court {court.court_id}</h1>
+            <p className="court-type-tag">
+              Type<span>{court.courtType}</span>
+            </p>
           </div>
 
           <div className="reservation-section-wrapper">

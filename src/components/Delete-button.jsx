@@ -1,7 +1,6 @@
 import axios from "axios"
 
 const Delete = ({ url, onDeleteSuccess }) => {
-
   const deleteFunc = async () => {
     try {
       const token = localStorage.getItem("token")
@@ -21,7 +20,7 @@ const Delete = ({ url, onDeleteSuccess }) => {
 
   return (
     <button className="delete-btn-action" onClick={() => deleteFunc()}>
-      Delete_
+      Delete
     </button>
   )
 }

@@ -20,7 +20,7 @@ const ReservationForm = ({ courtId, price }) => {
     setFormState((prev) => ({
       ...prev,
       totalPrice: price,
-      court: courtId
+      court: courtId,
     }))
   }, [price, courtId])
 
@@ -58,14 +58,14 @@ const ReservationForm = ({ courtId, price }) => {
   return (
     <div className="res-form-container">
       <form className="glass-form" onSubmit={handleSubmit}>
-        <h3 className="sub-title">Book This Court_</h3>
+        <h3 className="sub-title">Book This Court</h3>
 
         <div className="input-field">
-          <label>Phone Number_</label>
+          <label>Phone Number</label>
           <input
             type="text"
             name="phoneNumber"
-            placeholder="Enter phone number_"
+            placeholder="Enter phone number"
             onChange={handleChange}
             value={formState.phoneNumber}
             required
@@ -73,7 +73,7 @@ const ReservationForm = ({ courtId, price }) => {
         </div>
 
         <div className="input-field">
-          <label>Select Date_</label>
+          <label>Select Date</label>
           <Calendar
             value={formState.date}
             onChange={handleDateChange}
@@ -84,7 +84,7 @@ const ReservationForm = ({ courtId, price }) => {
         </div>
 
         <div className="input-field">
-          <label>Time Slot_</label>
+          <label>Time Slot</label>
           <select
             name="timeSlot"
             value={formState.timeSlot}
@@ -100,10 +100,14 @@ const ReservationForm = ({ courtId, price }) => {
         </div>
 
         <div className="price-summary">
-          <p>Total Price_ <span>{formState.totalPrice} BHD</span></p>
+          <p>
+            Total Price: <span>{formState.totalPrice} BHD</span>
+          </p>
         </div>
-
-        <button type="submit" className="btn btn-primary">Confirm Reservation_</button>
+        <br />
+        <button type="submit" className="btn btn-primary">
+          Confirm Reservation
+        </button>
       </form>
     </div>
   )
