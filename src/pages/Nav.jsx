@@ -3,10 +3,19 @@ import { Link } from "react-router-dom"
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
 
+  const signOut = () => {
+    localStorage.clear()
+    const token = localStorage.getItem("token")
+
+    console.log(token)
+  }
+
   if (user) {
     userOptions = (
       <div className="nav-user-profile">
-        <span className="welcome-msg">Welcome  <span>{user.name}</span></span>
+        <span className="welcome-msg">
+          Welcome <span>{user.name}</span>
+        </span>
         <Link onClick={handleLogOut} to="/" className="signout-btn">
           Sign Out
         </Link>
@@ -21,6 +30,9 @@ const Nav = ({ user, handleLogOut }) => {
       <Link to="/reservation">Reservation</Link>
       <Link to="/equipment">Equipments</Link>
       <Link to="/profile">Profile</Link>
+      <Link to="/sign-in" onClick={signOut}>
+        sign-out
+      </Link>
     </div>
   )
 
@@ -28,11 +40,11 @@ const Nav = ({ user, handleLogOut }) => {
     <header className="main-nav-header">
       <div className="nav-container">
         <div className="logo">
-          <Link to="/">Padel<span>Hub</span></Link>
+          <Link to="/">
+            Padel<span>Hub</span>
+          </Link>
         </div>
-        <nav className="nav-content">
-          {user ? userOptions : publicOptions}
-        </nav>
+        <nav className="nav-content">{user ? userOptions : publicOptions}</nav>
       </div>
     </header>
   )

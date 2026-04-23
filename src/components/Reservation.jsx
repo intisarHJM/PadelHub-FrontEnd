@@ -2,14 +2,17 @@ import React, { useState, useEffect, useCallback } from "react"
 import axios from "axios"
 import Nav from "../pages/Nav"
 import Delete from "./Delete-button"
+import { useNavigate } from "react-router-dom"
 
 const Reservation = () => {
   const [reservations, setReservations] = useState([])
   const [loading, setLoading] = useState(true)
+  const nav = useNavigate()
+  const token = localStorage.getItem("token")
 
   const getUserReservation = useCallback(async () => {
     try {
-      const token = localStorage.getItem("token")
+      // const token = localStorage.getItem("token")
       const id = localStorage.getItem("userID")
       if (!token) {
         setLoading(false)
@@ -32,6 +35,16 @@ const Reservation = () => {
     getUserReservation()
   }, [getUserReservation])
 
+  useEffect(() => {
+    if (!token) {
+      nav("/sign-in")
+    }
+  }, [])
+
+  if (!token) {
+    return null
+  }
+
   return (
     <div className="page-layout">
       <Nav />
@@ -45,14 +58,14 @@ const Reservation = () => {
             <div key={res._id || index} className="res-card">
               <div className="res-card-header">
                 <h3>
-                  Court_ <span>{res.court?.court_id || "N/A"}</span>
+                  Court <span>{res.court?.court_id || "N/A"}</span>
                 </h3>
                 <span className="price-tag">{res.court?.price} BHD</span>
               </div>
 
               <div className="res-card-body">
                 <div className="res-info">
-                  <label>Date_</label>
+                  <label>Date</label>
                   <p>
                     {res.date
                       ? new Date(res.date).toLocaleDateString()
@@ -60,11 +73,11 @@ const Reservation = () => {
                   </p>
                 </div>
                 <div className="res-info">
-                  <label>Time_</label>
+                  <label>Time</label>
                   <p>{res.timeSlot || "8:00 PM - 10:00 PM"}</p>
                 </div>
                 <div className="res-info">
-                  <label>Phone_</label>
+                  <label>Phone</label>
                   <p>{res.phoneNumber}</p>
                 </div>
               </div>

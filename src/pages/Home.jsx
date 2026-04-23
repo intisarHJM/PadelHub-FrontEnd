@@ -5,13 +5,15 @@ import axios from "axios"
 import Court from "../components/Court"
 
 const Home = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()4  const nav = useNavigate()
+  const nav = useNavigate()
   const [courts, setCourts] = useState([])
+  const token = localStorage.getItem("token")
 
   useEffect(() => {
     const viewAllCourts = async () => {
       try {
-        const token = localStorage.getItem("token")
+        // const token = localStorage.getItem("token")
         const res = await axios.get("http://localhost:3001/courts", {
           headers: { Authorization: `Bearer ${token}` },
         })
@@ -23,18 +25,25 @@ const Home = () => {
     viewAllCourts()
   }, [])
 
+  useEffect(() => {
+    if (!token) {
+      nav("/sign-in")
+    }
+  }, [])
+
+  if (!token) {
+    return null
+  }
+
   return (
     <div className="home-container">
-
       <header className="home-hero">
         <Nav />
         <div className="hero-content">
-
           <p>Available Padel Courts</p>
         </div>
       </header>
 
-      
       <main className="courts-section">
         <div className="section-title">
           <h2>Reserve a court below</h2>

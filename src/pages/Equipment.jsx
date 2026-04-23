@@ -5,16 +5,52 @@ import { useNavigate } from "react-router-dom"
 
 const Equipment = () => {
   const id = localStorage.getItem("userID")
-
-  //this state for the customer to know what they added to the cart
-  const [totals, setTotals] = useState({
-    "Padel Gear": 0,
-    Balls: 0,
-    "Sport T-shirt": 0,
-  })
-
+  let initialState = {
+    toolName: "Padel-gear",
+    quantity: 1,
+  }
   const nav = useNavigate()
   const token = localStorage.getItem("token")
+
+  const [equipment, setEquipment] = useState(initialState)
+  const [price, setPrice] = useState(2)
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setEquipment({ ...equipment, [name]: value })
+  }
+
+  useEffect(() => {
+    const calculatePrice = () => {
+      let unitPrice = 0
+
+      if (equipment.toolName === "Padel-gear") unitPrice = 2
+      else if (equipment.toolName === "Balls") unitPrice = 4
+      else if (equipment.toolName === "Sport-T-shirt") unitPrice = 6
+
+      setPrice(unitPrice * Number(equipment.quantity))
+    }
+
+    calculatePrice()
+  }, [equipment])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      // const token = localStorage.getItem("token")
+      if (!token) return
+      await axios.post(
+        `http://localhost:3001/equipments/buy/${id}`,
+        equipment,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      alert("Order Placed Successfully_")
+    } catch (error) {
+      console.error("Error: " + error)
+    }
+  }
 
   useEffect(() => {
     if (!token) {
@@ -24,123 +60,6 @@ const Equipment = () => {
 
   if (!token) {
     return null
-  }
-
-  const initialState = {
-    toolName: "first-tool",
-    quantity: 1,
-  }
-
-  const [equipment, setEquipment] = useState(initialState)
-  const [price, setPrice] = useState(0)
-
-  //confirm statutes
-  const [isConfirmed, setIsConfirmed] = useState(false)
-
-  const handleChange = (event) => {
-    const { name, value } = event.target
-
-    const updatedEquipment = { ...equipment, [name]: value }
-
-    if (name === "toolName") {
-      updatedEquipment.quantity = 1
-    }
-    setEquipment(updatedEquipment)
-
-    let unitPrice = 0
-
-    if (updatedEquipment.toolName === "first-tool") {
-      unitPrice = 2
-    } else if (updatedEquipment.toolName === "second-tool") {
-      unitPrice = 4
-    } else if (updatedEquipment.toolName === "third-tool") {
-      unitPrice = 6
-    } else {
-      unitPrice = 0
-    }
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    try {
-      const token = localStorage.getItem("token")
-      if (!token) return
-      await axios.post(
-        `http://localhost:3001/equipments/buy/${id}`,
-        equipment,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-
-      setIsConfirmed(true)
-    } catch (error) {
-      console.error("Error: " + error)
-    }
-  }
-
-  const addItemToCart = () => {
-    let equipmentName = ""
-    let unitPrice = 0
-
-    if (equipment.toolName === "first-tool") {
-      equipmentName = "Padel Gear"
-      unitPrice = 2
-    } else if (equipment.toolName === "second-tool") {
-      equipmentName = "Balls"
-      unitPrice = 4
-    } else if (equipment.toolName === "third-tool") {
-      equipmentName = "Sport T-shirt"
-      unitPrice = 6
-    }
-
-    const addedCost = Number(equipment.quantity) * unitPrice
-
-    setTotals({
-      ...totals,
-      [equipmentName]: totals[equipmentName] + Number(equipment.quantity),
-    })
-
-    // add the new price to the existing price
-    setPrice(price + addedCost)
-
-    setEquipment({ toolName: "first-tool", quantity: 1 })
-  }
-
-  if (isConfirmed) {
-    return (
-      <div className="page-layout">
-        <Nav />
-
-        <div
-          className="form-card"
-          style={{ textAlign: "center", marginTop: "50px" }}
-        >
-          <h1>✅</h1>
-          <br />
-          <h1>Thank You For Ordering </h1>
-          <br />
-          <p>Congratulations! Your order is successfully placed.</p>
-          <br />
-          <p>
-            Total Paid: <strong>{price}</strong> BHD
-          </p>
-          <br />
-
-          <button
-            className="update-btn"
-            onClick={() => {
-              setIsConfirmed(false) // Go back to shop
-              setEquipment({ toolName: "first-tool", quantity: 1 }) // Reset form
-              setPrice(2)
-            }}
-          >
-            Continue Shopping
-          </button>
-        </div>
-      </div>
-    )
   }
 
   return (
@@ -155,7 +74,7 @@ const Equipment = () => {
             alt="Padel Gear"
           />
           <p>
-            Padel Gear<span>2 BHD</span>
+            Padel Gear <span>2 BHD</span>
           </p>
         </div>
         <div className="item-card">
@@ -182,17 +101,22 @@ const Equipment = () => {
         <h3 className="sub-title">Place Your Order</h3>
 
         <div className="input-field">
-          <label>Select Tool</label>
-          <select
-            name="toolName"
-            onChange={handleChange}
-            value={equipment.toolName}
-          >
+          {/* <label>Select Tool_</label>
+          <select name="toolName" onChange={handleChange} value={equipment.toolName}>
             <option value="first-tool">Padel Gear</option>
             <option value="second-tool">Balls</option>
             <option value="third-tool">Sport T-shirt</option>
-          </select>
+          </select> */}
         </div>
+        <label htmlFor="toolName" onChange={handleChange}>
+          Tool
+        </label>
+        <select name="toolName" onChange={handleChange} id="toolName">
+          <option value="" disabled defaultValue></option>
+          <option value="Padel-gear">Padel Gear</option>
+          <option value="Balls">Balls</option>
+          <option value="Sport-T-shirt">Sport T-shirt</option>
+        </select>
 
         <div className="input-field">
           <label>Quantity</label>
@@ -207,56 +131,13 @@ const Equipment = () => {
 
         <div className="total-section">
           <p>
-            Total Price: <span>{price} BHD</span>
+            Total Price <span>{price} BHD</span>
           </p>
-          <div className="order-btns">
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={addItemToCart}
-            >
-              Add Item
-            </button>
-          </div>
-        </div>
-      </form>
-
-      {/* the cart details */}
-      <div className="form-card" style={{ marginTop: "20px" }}>
-        <h3 className="sub-title">My Basket 🧺</h3>
-        <hr />
-        <p>
-          Padel Gear: <strong>{totals["Padel Gear"]}</strong> items
-        </p>
-        <p>
-          Balls: <strong>{totals["Balls"]}</strong> items
-        </p>
-        <p>
-          Sport T-shirts: <strong>{totals["Sport T-shirt"]}</strong> items
-        </p>
-        <br />
-
-        <div className="basket-btns">
-          <button
-            className="btn btn-primary"
-            type="button"
-            onClick={() => {
-              setTotals({ "Padel Gear": 0, Balls: 0, "Sport T-shirt": 0 })
-              setEquipment({ toolName: "first-tool", quantity: 1 })
-              setPrice(0)
-            }}
-          >
-            Reset Card
-          </button>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={handleSubmit}
-          >
+          <button type="submit" className="btn btn-primary">
             Purchase Now
           </button>
         </div>
-      </div>
+      </form>
     </div>
   )
 }

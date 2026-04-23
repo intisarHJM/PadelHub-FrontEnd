@@ -39,7 +39,9 @@ const ViewCount = () => {
 
           <div className="court-header-info">
             <h1 className="form-title">Court {court.court_id}</h1>
-            <p className="court-type-tag">Type<span>{court.courtType}</span></p>
+            <p className="court-type-tag">
+              Type<span>{court.courtType}</span>
+            </p>
           </div>
 
           <div className="reservation-section-wrapper">

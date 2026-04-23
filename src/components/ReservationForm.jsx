@@ -65,7 +65,7 @@ const ReservationForm = ({ courtId, price }) => {
           <input
             type="text"
             name="phoneNumber"
-            placeholder="Enter phone number_"
+            placeholder="Enter phone number"
             onChange={handleChange}
             value={formState.phoneNumber}
             required
@@ -73,7 +73,7 @@ const ReservationForm = ({ courtId, price }) => {
         </div>
 
         <div className="input-field">
-          <label>Select Date_</label>
+          <label>Select Date</label>
           <Calendar
             value={formState.date}
             onChange={handleDateChange}

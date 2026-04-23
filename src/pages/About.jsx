@@ -1,6 +1,21 @@
+import { useNavigate } from "react-router-dom"
 import Nav from "./Nav"
+import { useEffect } from "react"
 
 const About = () => {
+  const nav = useNavigate()
+  const token = localStorage.getItem("token")
+
+  useEffect(() => {
+    if (!token) {
+      nav("/sign-in")
+    }
+  }, [])
+
+  if (!token) {
+    return null
+  }
+
   return (
     <div className="page-layout">
       <Nav />
@@ -24,7 +39,7 @@ const About = () => {
 
           <div className="about-text-card">
             <strong>
-              {" "}
+              {/* {" "} */}
               <p>
                 Padel Club Raed provides professional courts (indoor and
                 outdoor) with the highest specifications. We make it easy for

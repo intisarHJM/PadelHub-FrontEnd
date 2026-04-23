@@ -15,32 +15,34 @@ const Review = () => {
         const res = await axios.get(`http://localhost:3001/courts/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        setReviews(res.data.reviews || [])
+        setReviews(res.data.court.reviews)
       } catch (err) {
         console.log("Error:", err)
       }
     }
-    if (id) getReviews()
+    getReviews()
   }, [id])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const token = localStorage.getItem("token")
-      const newReviewData = {
-        description: description,
-        rating: Number(rating),
+    if (description) {
+      try {
+        const token = localStorage.getItem("token")
+        const newReviewData = {
+          description: description,
+          rating: Number(rating),
+        }
+        const res = await axios.post(
+          `http://localhost:3001/courts/${id}/reviews`,
+          newReviewData,
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+        setReviews(res.data.court.reviews)
+        setDescription("")
+        setRating(5)
+      } catch (err) {
+        console.error("Error:", err.response.data)
       }
-      const res = await axios.post(
-        `http://localhost:3001/courts/${id}/reviews`,
-        newReviewData,
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
-      setReviews(res.data.court.reviews)
-      setDescription("")
-      setRating(5)
-    } catch (err) {
-      console.error("Error:", err.response?.data)
     }
   }
 
@@ -59,7 +61,7 @@ const Review = () => {
         </div>
 
         <div className="input-field">
-          <label>Rating_</label>
+          <label>Rating</label>
           <select value={rating} onChange={(e) => setRating(e.target.value)}>
             <option value="5">⭐⭐⭐⭐⭐ </option>
             <option value="4">⭐⭐⭐⭐ </option>
@@ -69,7 +71,9 @@ const Review = () => {
           </select>
         </div>
 
-        <button type="submit" className="btn btn-primary">Send Review</button>
+        <button type="submit" className="btn btn-primary">
+          Send Review
+        </button>
       </form>
 
       <div className="reviews-list-section">
@@ -78,8 +82,13 @@ const Review = () => {
           [...reviews].reverse().map((rev, index) => (
             <div key={rev._id || index} className="review-item-card">
               <div className="review-card-header">
-                <span className="stars-display">{"⭐".repeat(Number(rev.rating))}</span>
-                <span className="review-date">{rev.createdAt?.split("T")[0]}</span>
+                <p>user name : {rev.author.username}</p>
+                <span className="stars-display">
+                  {"⭐".repeat(Number(rev.rating))}
+                </span>
+                <span className="review-date">
+                  {rev.createdAt?.split("T")[0]}
+                </span>
               </div>
               <p className="review-text">{rev.description}</p>
             </div>
