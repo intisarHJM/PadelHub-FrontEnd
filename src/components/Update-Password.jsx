@@ -29,8 +29,6 @@ const UpdatePassword = ({ user }) => {
 
     if (password.newPassword === password.confirmPassword) {
       try {
-        // const token = localStorage.getItem("token")
-
         const { oldPassword, newPassword } = password
 
         const response = await axios.put(
