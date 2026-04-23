@@ -47,7 +47,7 @@ const Confirmation = () => {
           <button className="btn btn-primary" onClick={() => navigate("/reservation")}>
             View My Reservations
           </button>
-          <button className="btn btn-secondary" onClick={() => navigate("/")}>
+          <button className="btn btn-secondary" onClick={() => navigate("/home")}>
             Back To Home
           </button>
         </div>
