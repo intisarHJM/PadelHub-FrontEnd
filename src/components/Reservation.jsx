@@ -83,7 +83,7 @@ const Reservation = () => {
 
               <div className="res-card-footer">
                 <Delete
-                  url={`http://localhost:3001/reservations/${res._id}`}
+                  url={`https://padelhub-backend-lsre.onrender.com/reservations/${res._id}`}
                   onDeleteSuccess={getUserReservation}
                 />
               </div>

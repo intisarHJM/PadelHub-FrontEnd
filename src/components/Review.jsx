@@ -12,9 +12,12 @@ const Review = () => {
     const getReviews = async () => {
       try {
         const token = localStorage.getItem("token")
-        const res = await axios.get(`https://padelhub-backend-lsre.onrender.com/courts/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        const res = await axios.get(
+          `https://padelhub-backend-lsre.onrender.com/courts/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         setReviews(res.data.court.reviews)
       } catch (err) {
         console.log("Error:", err)
@@ -33,7 +36,7 @@ const Review = () => {
           rating: Number(rating),
         }
         const res = await axios.post(
-          `http://localhost:3001/courts/${id}/reviews`,
+          `https://padelhub-backend-lsre.onrender.com/courts/${id}/reviews`,
           newReviewData,
           { headers: { Authorization: `Bearer ${token}` } }
         )
