@@ -32,7 +32,7 @@ const UpdatePassword = ({ user }) => {
         const { oldPassword, newPassword } = password
 
         const response = await axios.put(
-          `http://localhost:3001/auth/update-password/${id}`,
+          `https://padelhub-backend-lsre.onrender.com/auth/update-password/${id}`,
           { oldPassword, newPassword },
           { headers: { Authorization: `Bearer ${token}` } }
         )

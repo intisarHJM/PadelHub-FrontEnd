@@ -39,7 +39,7 @@ const ReservationForm = ({ courtId, price }) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3001/reservations/${id}`,
+        `https://padelhub-backend-lsre.onrender.com/reservations/${id}`,
         formState,
         {
           headers: {

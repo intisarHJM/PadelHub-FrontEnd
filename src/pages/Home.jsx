@@ -12,9 +12,12 @@ const Home = () => {
   useEffect(() => {
     const viewAllCourts = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/courts", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        const res = await axios.get(
+          "https://padelhub-backend-lsre.onrender.com/courts",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         setCourts(res.data.allCourts)
       } catch (error) {
         console.error("Error fetching courts:", error)

@@ -39,7 +39,7 @@ const Equipment = () => {
     try {
       if (!token) return
       await axios.post(
-        `http://localhost:3001/equipments/buy/${id}`,
+        `https://padelhub-backend-lsre.onrender.com/equipments/buy/${id}`,
         equipment,
         {
           headers: { Authorization: `Bearer ${token}` },

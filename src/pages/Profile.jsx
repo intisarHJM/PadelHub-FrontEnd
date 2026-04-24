@@ -12,7 +12,7 @@ const Profile = () => {
     const getUserData = async () => {
       try {
         if (!token) return
-        const res = await axios.get("http://localhost:3001/auth/session", {
+        const res = await axios.get("https://padelhub-backend-lsre.onrender.com/auth/session", {
           headers: { Authorization: `Bearer ${token}` },
         })
         setUserData(res.data)

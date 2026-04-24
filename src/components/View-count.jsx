@@ -13,9 +13,12 @@ const ViewCount = () => {
     const fetchCourt = async () => {
       try {
         const token = localStorage.getItem("token")
-        const res = await axios.get(`http://localhost:3001/courts/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        const res = await axios.get(
+          `https://padelhub-backend-lsre.onrender.com/courts/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         setCourt(res.data.court)
       } catch (error) {
         console.error("Error fetching court:", error)
