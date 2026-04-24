@@ -18,7 +18,7 @@ const Reservation = () => {
         return
       }
       const res = await axios.get(
-        `http://localhost:3001/user/reservation/${id}`,
+        `https://padelhub-backend-lsre.onrender.com/user/reservation/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
       const data = Array.isArray(res.data) ? res.data : [res.data]

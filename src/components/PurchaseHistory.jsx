@@ -16,7 +16,7 @@ const PurchaseHistory = () => {
         if (!token) return
 
         const response = await axios.get(
-          `http://localhost:3001/user/purchase-history/${id}`,
+          `https://padelhub-backend-lsre.onrender.com/user/purchase-history/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -12,7 +12,7 @@ const Review = () => {
     const getReviews = async () => {
       try {
         const token = localStorage.getItem("token")
-        const res = await axios.get(`http://localhost:3001/courts/${id}`, {
+        const res = await axios.get(`https://padelhub-backend-lsre.onrender.com/courts/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         setReviews(res.data.court.reviews)
