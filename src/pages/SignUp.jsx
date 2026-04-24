@@ -26,13 +26,13 @@ const SignUp = () => {
     e.preventDefault()
     try {
       const res = await axios.post(
-        "http://localhost:3001/auth/sign-up",
+        /* "http://localhost:3001/auth/sign-up"*/"https://padelhub-backend-lsre.onrender.com/auth/sign-up",
         userData
       )
       console.log("Success:", res.data)
       setUserData(initialState)
       navigate("/Sign-in")
-      
+
     } catch (err) {
       console.error("Error signing up:", err)
     }

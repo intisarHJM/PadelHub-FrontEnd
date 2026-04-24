@@ -23,12 +23,12 @@ const SignIn = ({ setUser }) => {
     e.preventDefault()
     try {
       const res = await axios.post(
-        "http://localhost:3001/auth/sign-in",
+        /* "http://localhost:3001/auth/sign-in"*/ "https://padelhub-backend-lsre.onrender.com/auth/sign-in",
         userData
       )
 
       localStorage.setItem("token", res.data.token)
-       localStorage.setItem("userID", res.data.user.id)
+      localStorage.setItem("userID", res.data.user.id)
 
       setUser(res.data.user)
       nav("/home")
@@ -43,31 +43,29 @@ const SignIn = ({ setUser }) => {
       <form className="signin-form" onSubmit={handleSubmit}>
         <h1 id="signIn-title">Sign in</h1>
 
-          <div className="input-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="username@gmail.com"
-              id="email"
-              onChange={handleChange}
-              value={userData.email}
-              required
-            />
+        <div className="input-group">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="username@gmail.com"
+            id="email"
+            onChange={handleChange}
+            value={userData.email}
+            required
+          />
 
-
-
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="******"
-              id="password"
-              onChange={handleChange}
-              value={userData.password}
-              required
-            />
-          </div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="******"
+            id="password"
+            onChange={handleChange}
+            value={userData.password}
+            required
+          />
+        </div>
 
         <Link to="/sign-up" className="signup-link">
           Create new account
@@ -76,9 +74,7 @@ const SignIn = ({ setUser }) => {
         <button
           type="submit"
           className="signin-button"
-      
           disabled={!userData.email || !userData.password}
-
         >
           Sign in
         </button>
