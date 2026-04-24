@@ -30,7 +30,7 @@ The client-side application for this project can be found here:
 * React and Javascript
 
 ***
-
+### ***Getting Started***
 
 1.  Open the app and click Sign Up to create a new account. If you already have an account, click Sign In.
 
