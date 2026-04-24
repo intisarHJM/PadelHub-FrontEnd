@@ -38,7 +38,7 @@ const SignUp = () => {
     }
   }
 
-  // --- PrimeReact Templates ---
+  // PrimeReact Templates
   const header = <div className="font-bold mb-3">Pick a password</div>
   const footer = (
     <>

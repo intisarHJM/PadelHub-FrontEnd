@@ -11,7 +11,6 @@ const Profile = () => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        // const token = localStorage.getItem("token")
         if (!token) return
         const res = await axios.get("http://localhost:3001/auth/session", {
           headers: { Authorization: `Bearer ${token}` },

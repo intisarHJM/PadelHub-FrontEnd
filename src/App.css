@@ -49,11 +49,6 @@
 /* Sign-in Page */
 
 .signin-container {
-  background:
-    linear-gradient(rgba(11, 18, 33, 0.4), rgba(11, 18, 33, 0.5)),
-    url("https://i.pinimg.com/1200x/cb/53/f8/cb53f8526a879d00ecd86e7c82adb50c.jpg")
-      no-repeat center center;
-
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -272,11 +267,6 @@ input#password {
 Sign-up page  */
 
 .signup-container {
-  background:
-    linear-gradient(rgba(11, 18, 33, 0.4), rgba(11, 18, 33, 0.7)),
-    url("https://i.pinimg.com/1200x/cb/53/f8/cb53f8526a879d00ecd86e7c82adb50c.jpg")
-      no-repeat center center;
-
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -429,7 +419,6 @@ Sign-up page  */
 }
 
 .home-hero {
-  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

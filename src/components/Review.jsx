@@ -56,7 +56,7 @@ const Review = () => {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Write your experience here . . . "
+            placeholder="Write your description here  "
           />
         </div>
 
@@ -77,7 +77,7 @@ const Review = () => {
       </form>
 
       <div className="reviews-list-section">
-        <h3 className="sub-title">Reviews List_</h3>
+        <h3 className="sub-title">Reviews List</h3>
         {reviews && reviews.length > 0 ? (
           [...reviews].reverse().map((rev, index) => (
             <div key={rev._id || index} className="review-item-card">

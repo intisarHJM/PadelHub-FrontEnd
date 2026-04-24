@@ -101,7 +101,7 @@ const ReservationForm = ({ courtId, price }) => {
 
         <div className="price-summary">
           <p>
-            Total Price: <span>{formState.totalPrice} BHD</span>
+            Total Price: <span>{formState.totalPrice} BD</span>
           </p>
         </div>
         <br />
