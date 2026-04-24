@@ -32,6 +32,7 @@ const SignUp = () => {
       console.log("Success:", res.data)
       setUserData(initialState)
       navigate("/Sign-in")
+      
     } catch (err) {
       console.error("Error signing up:", err)
     }
@@ -96,7 +97,7 @@ const SignUp = () => {
 
           <div className="input-field">
             <label htmlFor="password">Password</label>
-            
+
             {/*PrimeReact Password strength checker */}
 
             <Password
